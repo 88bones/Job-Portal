@@ -4,7 +4,7 @@ import account from "../Images/account.svg";
 import "../Css/NavBar.css";
 import Profile from "../Pages/Profile";
 
-const NavBar = ({ isOver, setIsOver }) => {
+const NavBar = ({ setIsOver }) => {
   const MenuItems = [
     { name: "Home", path: "/" },
     { name: "Jobs", path: "/Jobs" },

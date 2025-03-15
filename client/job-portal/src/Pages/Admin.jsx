@@ -1,10 +1,13 @@
 import React from "react";
+import NavBar from "../Components/NavBar";
 
 const Admin = () => {
   return (
-    <div>
-      <h1>Adion page</h1>
-    </div>
+    <>
+      <div className="admin-dashboard">
+        <aside className="side-bar"></aside>
+      </div>
+    </>
   );
 };
 

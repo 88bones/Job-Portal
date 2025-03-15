@@ -14,6 +14,7 @@ const Banner = ({ isOver, setisOver }) => {
           {isOver == true ? (
             <div>
               <Profile />
+              {console.log("hello mate")}
             </div>
           ) : (
             ""

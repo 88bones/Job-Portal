@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../Css/Profile.css";
 
@@ -6,7 +6,9 @@ const Profile = () => {
   const options = [
     { name: "Profile", path: "" },
     { name: "Logout", path: "" },
+    { name: "Login", path: "/register" },
   ];
+
   return (
     <div className="profile-container">
       <div className="profile-options">

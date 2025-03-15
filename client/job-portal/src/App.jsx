@@ -6,6 +6,7 @@ import Jobs from "./Pages/Jobs";
 import AboutUs from "./Pages/AboutUs";
 import Profile from "./Pages/Profile";
 import Admin from "./Pages/Admin";
+import Register from "./Components/Register";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
