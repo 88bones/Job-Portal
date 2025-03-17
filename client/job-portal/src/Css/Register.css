@@ -26,7 +26,7 @@ form{
     padding: 0px 10px;
 }
 
-input{
+.form-sub form input{
     width: 100%;
     padding: 12px 10px;
     border-radius: 6px;
@@ -37,16 +37,16 @@ input{
     outline: none;
 }
 
-input:focus{
+.form-sub input:focus{
     border: 3px solid skyblue;
 }
 
-input::placeholder{
-    color: var(--background);
-    opacity: 0.5;
+.form-sub input::placeholder{
+    color: var(--text);
+    opacity: 0.2;
 }
 
-button{
+.register-btn{
     padding: 12px 10px;
     border-radius: 6px;
     border:none;
@@ -57,7 +57,17 @@ button{
     cursor: pointer;
 }
 
-button:hover{
+.register-btn:hover{
     box-shadow: 0px 0px 8px skyblue;
 }
  
+.login{
+    margin-top: 20px;
+    text-align: center;
+    color: var(--text);
+}
+
+.login a{
+    text-decoration: none;
+    color: skyblue;
+}

@@ -114,7 +114,9 @@ const Register = () => {
             placeholder="resume"
           /> */}
 
-          <button type="submit">Create account</button>
+          <button className="register-btn" type="submit">
+            Create account
+          </button>
         </form>
         <div className="login">
           <p>
