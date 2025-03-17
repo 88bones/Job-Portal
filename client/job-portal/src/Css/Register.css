@@ -1,3 +1,63 @@
 .form-container{
-    background-color: saddlebrown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
 }
+
+.form-sub{
+    width: 30%;
+    background-color: var(--sub-background);
+    position: absolute;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px skyblue;
+
+}
+.form-sub h2{
+    margin-bottom: 20px;
+    padding: 0px 0px 0px 10px;
+    color: var(--heading);
+}
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+}
+
+input{
+    width: 100%;
+    padding: 12px 10px;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 20px;
+    background-color: var(--sub-back);
+    color: var(--text);
+    outline: none;
+}
+
+input:focus{
+    border: 3px solid skyblue;
+}
+
+input::placeholder{
+    color: var(--background);
+    opacity: 0.5;
+}
+
+button{
+    padding: 12px 10px;
+    border-radius: 6px;
+    border:none;
+    background-color:skyblue;
+    color: var(--text);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover{
+    box-shadow: 0px 0px 8px skyblue;
+}
+ 

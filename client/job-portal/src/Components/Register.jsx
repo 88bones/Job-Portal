@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../Css/Register.css";
 import Axios from "axios";
+import { NavLink } from "react-router-dom";
 
 const Register = () => {
   const [data, setData] = useState({
@@ -46,39 +47,39 @@ const Register = () => {
   return (
     <div className="form-container">
       <div className="form-sub">
-        <h2>Register</h2>
+        <h2>Create a new account.</h2>
         <form onSubmit={handleSubmit}>
-          <label>Full Name: </label>
           <input
             type="text"
             name="fullname"
+            placeholder="Full Name"
             value={data.fullname}
             onChange={handleChange}
             required
           />
 
-          <label>Email: </label>
           <input
             type="email"
             name="email"
+            placeholder="Email"
             value={data.email}
             onChange={handleChange}
             required
           />
 
-          <label>Password: </label>
           <input
             type="password"
             name="password"
+            placeholder="Password"
             value={data.password}
             onChange={handleChange}
             required
           />
 
-          <label>Confirm Password: </label>
           <input
             type="password"
             name="repassword"
+            placeholder="Confirm Password"
             value={data.repassword}
             onChange={handleChange}
             required
@@ -87,29 +88,39 @@ const Register = () => {
             <span style={{ color: "red", fontSize: "14px" }}>{error}</span>
           )}
 
-          <label>Address: </label>
           <input
             type="text"
             name="address"
+            placeholder="Address"
             value={data.address}
             onChange={handleChange}
             required
           />
 
-          <label>Phone: </label>
           <input
             type="tel"
             name="phone"
+            placeholder="Phone"
             value={data.phone}
             onChange={handleChange}
             required
           />
 
-          <label>Resume: </label>
-          <input type="file" name="resume" onChange={handleChange} />
+          {/* <label>Resume: </label>
+          <input
+            type="file"
+            name="resume"
+            onChange={handleChange}
+            placeholder="resume"
+          /> */}
 
-          <button type="submit">Submit</button>
+          <button type="submit">Create account</button>
         </form>
+        <div className="login">
+          <p>
+            Already have an account? <NavLink>Login</NavLink>
+          </p>
+        </div>
       </div>
     </div>
   );
