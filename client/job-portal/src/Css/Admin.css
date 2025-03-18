@@ -1,0 +1,9 @@
+.admin-dashboard{
+    display: flex;
+    height: 100vh;
+}
+
+.admin-content{
+    width: 90%;
+    padding: 2vh 4vw;
+}

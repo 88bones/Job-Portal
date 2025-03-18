@@ -5,7 +5,6 @@
 }
 
 .card-holder{
-
     width: 60%;
     display: flex;
     padding: 8px;
@@ -14,7 +13,8 @@
 }
 
 .card-sub-container{
-    background-color: var(--sub-background);
+  
+    /* background: #2193b0; */
     display: flex;
     width: 35%;
     flex-direction: column;
@@ -23,7 +23,7 @@
     position: relative;
     padding: 40px 30px;
     border-radius: 20px;
-    box-shadow: 0px 0px 12px black;
+    border: 2px solid var(--sub-background);
 }
 
 .card-sub-container h3{
@@ -46,6 +46,6 @@
     transition: all 0.3s ease-in-out;
 }
 .card-sub-container button:hover{
-    box-shadow: 0px 0px 12px black;
+    box-shadow: 0px 0px 6px skyblue;
     scale: 1.2;
 }

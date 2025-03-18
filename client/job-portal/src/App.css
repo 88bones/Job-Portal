@@ -1,14 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Quicksand:wght@300..700&display=swap');
 
 :root{
-    --background: #06141b;
-    --text: #D1DDED;
-    --sub-background: #182d47;
-    --sub-back: #2a4364;
-    --heading: #B3D6F9;
-    --hover:#758B85;
-    --button:#e8edf1;
-    --font-text:"Quicksand", sans-serif;
+    /* background: #141E30;     */
+    /* --sub-background: linear-gradient(to right, #243B55, #141E30);  */
+    /* --sub-background: linear-gradient(to right, #2193b0, #6dd5ed); */
+    /* --text: #D1DDED; */
+    /* --background: linear-gradient(90deg, rgba(58,123,213,1) 20%, rgba(0,210,255,1) 74%);  */
+    /* --sub-background: #182d47;  */
+    /* --sub-back: #055361; */
+    /* --heading: #B3D6F9; */
+    /* --hover:#758B85; */
+    /* --button:#e8edf1; */
+    --background:rgb(255, 255, 255);
+    --sub-background:#D5DEEF;
+    --text:#628ECB;
+    --heading:#395886;
+    --button:#395886;
+    --hover:#8AAEE0;
+    --sub-back:#B1C9EF;
+    --font-text:"Quicksand", sans-serif; 
+    --font-heading:"Figtree", sans-serif;
+}
+
+body{
+    /* background: rgb(58,123,213);   */
+    background: var(--background); 
+    font-family: var(--font-text);
 }
 
 

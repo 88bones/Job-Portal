@@ -1,11 +1,16 @@
 import React from "react";
-import NavBar from "../Components/NavBar";
+import "../Css/Admin.css";
+import SideBar from "../Components/SideBar";
+import { Outlet } from "react-router-dom";
 
 const Admin = () => {
   return (
     <>
       <div className="admin-dashboard">
-        <aside className="side-bar"></aside>
+        <SideBar />
+        <div className="admin-content">
+          <Outlet />
+        </div>
       </div>
     </>
   );

@@ -7,6 +7,7 @@ import AboutUs from "./Pages/AboutUs";
 import Profile from "./Pages/Profile";
 import Admin from "./Pages/Admin";
 import Register from "./Components/Register";
+import Users from "./Components/Users";
 
 function App() {
   return (
@@ -16,8 +17,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/admin" element={<Admin />} />
         <Route path="/register" element={<Register />} />
+
+        {/* admin */}
+        <Route path="/admin" element={<Admin />}>
+          <Route path="users" element={<Users />} />
+        </Route>
       </Routes>
     </Router>
   );
