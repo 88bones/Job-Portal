@@ -8,8 +8,8 @@ const Banner = ({ isOver, setisOver }) => {
       <div className="banner-main-container">
         <div
           className="profile-ontainer"
-          onMouseOver={() => setisOver(true)}
-          onMouseOut={() => setisOver(false)}
+          // onMouseOver={() => setisOver(true)}
+          // onMouseOut={() => setisOver(false)}
         >
           {isOver == true ? (
             <div>

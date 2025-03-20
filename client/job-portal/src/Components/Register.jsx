@@ -15,11 +15,13 @@ const Register = () => {
   });
 
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
+    const { name, value } = e.target;
     setData({
       ...data,
-      [name]: type === "file" ? files[0] : value,
+      [name]: value,
     });
     if (name === "repassword") {
       setError("");
@@ -38,9 +40,22 @@ const Register = () => {
       password: data.password,
       address: data.address,
       phone: data.phone,
-    }).then((response) => {
-      alert("user created");
-    });
+    })
+      .then((response) => {
+        // alert("user created");
+        setSuccess("Account created successfully!");
+        setData({
+          fullname: "",
+          email: "",
+          password: "",
+          repassword: "",
+          address: "",
+          phone: "",
+        });
+      })
+      .catch((error) => {
+        console.log("Error submitting data.", error);
+      });
     console.log("Form Data Submitted:", data);
   };
 
@@ -117,6 +132,11 @@ const Register = () => {
           <button className="register-btn" type="submit">
             Create account
           </button>
+          {success && (
+            <span className="success-span" style={{ color: "green" }}>
+              {success}
+            </span>
+          )}
         </form>
         <div className="login">
           <p>

@@ -40,8 +40,8 @@ form{
 }
 
 .form-sub input::placeholder{
-    color: var(--text);
-    opacity: 0.6;
+    color: var(--button);
+    opacity: 0.9;
 }
 
 .register-btn{
@@ -68,4 +68,10 @@ form{
 .login a{
     text-decoration: none;
     color: rgb(8, 66, 88);
+}
+
+.success-span{
+    padding: 10px 0px 0px 0px;
+    text-align: center;
+    font-family:700 ;
 }

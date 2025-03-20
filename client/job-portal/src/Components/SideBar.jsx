@@ -14,10 +14,8 @@ const SideBar = () => {
       <h1>アドミニストレータ</h1>
       <div className="bar-menu">
         {barItems.map((items, index) => (
-          <div className="bar-items">
-            <NavLink to={items.path} key={index}>
-              {items.name}
-            </NavLink>
+          <div className="bar-items" key={index}>
+            <NavLink to={items.path}>{items.name}</NavLink>
           </div>
         ))}
       </div>
