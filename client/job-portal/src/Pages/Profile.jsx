@@ -4,9 +4,8 @@ import "../Css/Profile.css";
 
 const Profile = () => {
   const options = [
-    { name: "Profile", path: "" },
-    { name: "Logout", path: "" },
-    { name: "Login", path: "/register" },
+    { name: "Register as a candidate", path: "/register" },
+    { name: "Register as a recruiter", path: "/recruiter" },
   ];
 
   return (

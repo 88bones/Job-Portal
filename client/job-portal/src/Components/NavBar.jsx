@@ -4,7 +4,7 @@ import account from "../Images/account.svg";
 import "../Css/NavBar.css";
 import Profile from "../Pages/Profile";
 
-const NavBar = ({ setIsOver }) => {
+const NavBar = ({ isOver, setIsOver }) => {
   const MenuItems = [
     { name: "Home", path: "/" },
     { name: "Jobs", path: "/Jobs" },
@@ -36,13 +36,14 @@ const NavBar = ({ setIsOver }) => {
           </div>
 
           <div className="account-centre">
-            <NavLink
-              to="/profile"
-              onMouseOver={() => setIsOver(true)}
+            {/* <NavLink
+              // to="/profile"
+              onClick={() => setIsOver(true)}
               // onMouseOut={() => setIsOver(false)}
             >
-              <img src={account} alt="Account" />
-            </NavLink>
+              button
+            </NavLink> */}
+            <button onClick={() => setIsOver(!isOver)}>Register</button>
           </div>
         </header>
       </nav>

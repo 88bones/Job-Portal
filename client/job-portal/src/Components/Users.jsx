@@ -4,7 +4,7 @@ import axios from "axios";
 
 const Users = () => {
   const [listOfUsers, setListOfUsers] = useState([]);
-  const [selectedRole, setSelectedRole] = useState();
+  const [selectedRole, setSelectedRole] = useState("");
 
   useEffect(() => {
     axios

@@ -12,14 +12,13 @@ mongoose
   .then(() => console.log("connected"))
   .catch((error) => console.error("Failed: ", error));
 
-app.get("/getUsers", (req, res) => {
-  UserModel.find({}, (err, result) => {
-    if (err) {
-      res.json(err);
-    } else {
-      res.json(result);
-    }
-  });
+app.get("/getUsers", async (req, res) => {
+  try {
+    const result = await UserModel.find({});
+    res.json(result);
+  } catch (err) {
+    res.json(err);
+  }
 });
 
 app.post("/createUser", async (req, res) => {

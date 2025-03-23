@@ -8,6 +8,7 @@ import Profile from "./Pages/Profile";
 import Admin from "./Pages/Admin";
 import Register from "./Components/Register";
 import Users from "./Components/Users";
+import Recruiter from "./Components/Recruiter";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/recruiter" element={<Recruiter />} />
 
         {/* admin */}
         <Route path="/admin" element={<Admin />}>

@@ -75,3 +75,14 @@ form{
     text-align: center;
     font-family:700 ;
 }
+
+.form-sub form select{
+    width: 100%;
+    padding: 12px 10px;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 20px;
+    background-color: var(--sub-back);
+    color: var(--text);
+    outline: none;
+}
