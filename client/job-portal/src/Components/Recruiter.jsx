@@ -30,11 +30,43 @@ const Recruiter = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (data.password !== data.repassword) {
+      setError("Passowrds do not match");
+      return;
+    }
+    Axios.post("http://localhost:3001/createRecruiter", {
+      companyname: data.companyname,
+      industry: data.industry,
+      email: data.email,
+      password: data.password,
+      phone: data.phone,
+      address: data.address,
+    })
+      .then((response) => {
+        setSuccess("Account registered successfully!");
+        setData({
+          companyname: "",
+          industry: "",
+          email: "",
+          password: "",
+          repassword: "",
+          phone: "",
+          address: "",
+        });
+      })
+      .catch((error) => {
+        console.log("Error submittting data", error);
+      });
+    console.log("Form Data Submitted", data);
+  };
+
   return (
     <div className="form-container">
       <div className="form-sub">
         <h2>Register your company.</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="companyname"
@@ -42,7 +74,12 @@ const Recruiter = () => {
             value={data.companyname}
             onChange={handleChange}
           />
-          <select name="industry" value={data.industry} onChange={handleChange}>
+          <select
+            name="industry"
+            value={data.industry}
+            onChange={handleChange}
+            required
+          >
             <option selected disabled value="">
               Industry
             </option>
@@ -50,7 +87,6 @@ const Recruiter = () => {
             <option value="mgm">Management</option>
             <option value="er">Engineering</option>
             <option value="med">Medical</option>
-            required
           </select>
           <input
             type="email"

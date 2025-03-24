@@ -9,6 +9,7 @@ import Admin from "./Pages/Admin";
 import Register from "./Components/Register";
 import Users from "./Components/Users";
 import Recruiter from "./Components/Recruiter";
+import Companies from "./Components/Companies";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         {/* admin */}
         <Route path="/admin" element={<Admin />}>
           <Route path="users" element={<Users />} />
+          <Route path="companies" element={<Companies />} />
         </Route>
       </Routes>
     </Router>

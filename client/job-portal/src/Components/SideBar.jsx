@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const SideBar = () => {
   const barItems = [
     { name: "Users", path: "/admin/users" },
-    { name: "Companies", path: "" },
+    { name: "Companies", path: "/admin/companies" },
     { name: "Jobs", path: "" },
     { name: "Something", path: "" },
   ];
