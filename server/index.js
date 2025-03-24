@@ -41,6 +41,16 @@ app.post("/createRecruiter", async (req, res) => {
   res.json(recruiter);
 });
 
+//get Recruiters
+app.get("/getRecruiters", async (req, res) => {
+  try {
+    const result = await RecruiterModel.find({});
+    res.json(result);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 app.listen(3001, () => {
   console.log("app is running ");
 });
