@@ -22,7 +22,7 @@ const Cards = () => {
     <div className="card-container">
       <div className="card-holder">
         {Cards.map((card, index) => (
-          <div className={`card-sub-container card-${index}`} key="index">
+          <div className={`card-sub-container card-${index}`} key={index}>
             <h3>{card.name}</h3>
             <p>{card.info}</p>
             <div className="card-btn" key={index}>

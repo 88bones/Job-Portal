@@ -1,9 +1,10 @@
 import React from "react";
+import NavBar from "../Components/NavBar";
 
-const Jobs = () => {
+const Jobs = ({ isOver, setIsOver }) => {
   return (
-    <div>
-      <h1>Jobs</h1>
+    <div className="jobs-main-container">
+      <NavBar isOver={isOver} />
     </div>
   );
 };

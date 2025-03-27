@@ -1,16 +1,13 @@
 import React from "react";
 import Profile from "../Pages/Profile";
+import NavBar from "./NavBar";
 import "../Css/Banner.css";
 
 const Banner = ({ isOver, setisOver }) => {
   return (
     <>
       <div className="banner-main-container">
-        <div
-          className="profile-ontainer"
-          // onMouseOver={() => setisOver(true)}
-          // onMouseOut={() => setisOver(false)}
-        >
+        <div className="profile-ontainer">
           {isOver == true ? (
             <div>
               <Profile />

@@ -36,13 +36,6 @@ const NavBar = ({ isOver, setIsOver }) => {
           </div>
 
           <div className="account-centre">
-            {/* <NavLink
-              // to="/profile"
-              onClick={() => setIsOver(true)}
-              // onMouseOut={() => setIsOver(false)}
-            >
-              button
-            </NavLink> */}
             <button onClick={() => setIsOver(!isOver)}>Register</button>
           </div>
         </header>
