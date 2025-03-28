@@ -36,6 +36,7 @@ const NavBar = ({ isOver, setIsOver }) => {
           </div>
 
           <div className="account-centre">
+            <button className="login-btn"> Login</button>
             <button onClick={() => setIsOver(!isOver)}>Register</button>
           </div>
         </header>
