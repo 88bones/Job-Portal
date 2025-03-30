@@ -36,7 +36,7 @@ const Recruiter = () => {
       setError("Passowrds do not match");
       return;
     }
-    Axios.post("http://localhost:3001/createRecruiter", {
+    Axios.post("http://localhost:3001/api/recruiters/createRecruiter", {
       companyname: data.companyname,
       industry: data.industry,
       email: data.email,
@@ -139,6 +139,7 @@ const Recruiter = () => {
               {success}
             </span>
           )}
+          {error && <span style={{ color: "red" }}>{error}</span>}
         </form>
         <div className="login">
           <p>

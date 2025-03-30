@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import account from "../Images/account.svg";
 import "../Css/NavBar.css";
-import Profile from "../Pages/Profile";
 
 const NavBar = ({ isOver, setIsOver }) => {
   const MenuItems = [
@@ -36,7 +34,9 @@ const NavBar = ({ isOver, setIsOver }) => {
           </div>
 
           <div className="account-centre">
-            <button className="login-btn"> Login</button>
+            <button className="login-btn">
+              <NavLink to={"/login"}> Login</NavLink>
+            </button>
             <button onClick={() => setIsOver(!isOver)}>Register</button>
           </div>
         </header>

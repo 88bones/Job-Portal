@@ -10,6 +10,7 @@ import Users from "./Components/Users";
 import Recruiter from "./Components/Recruiter";
 import Companies from "./Components/Companies";
 import { useState } from "react";
+import Login from "./Pages/Login";
 
 function App() {
   const [isOver, setIsOver] = useState(false);
@@ -28,6 +29,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/register" element={<Register />} />
         <Route path="/recruiter" element={<Recruiter />} />
+        <Route path="/login" element={<Login />} />
 
         {/* admin */}
         <Route path="/admin" element={<Admin />}>

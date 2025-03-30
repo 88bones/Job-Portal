@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Css/Register.css";
 import Axios from "axios";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 
 const Register = () => {
   const [data, setData] = useState({
@@ -15,6 +15,7 @@ const Register = () => {
   });
 
   const [error, setError] = useState("");
+  const [formError, setFormError] = useState("");
   const [success, setSuccess] = useState("");
 
   const handleChange = (e) => {
@@ -34,7 +35,7 @@ const Register = () => {
       setError("Passwords do not match!!");
       return;
     }
-    Axios.post("http://localhost:3001/createUser", {
+    Axios.post("http://localhost:3001/api/users/createUser", {
       fullname: data.fullname,
       email: data.email,
       password: data.password,
@@ -42,7 +43,6 @@ const Register = () => {
       phone: data.phone,
     })
       .then((response) => {
-        // alert("user created");
         setSuccess("Account created successfully!");
         setData({
           fullname: "",
@@ -54,6 +54,7 @@ const Register = () => {
         });
       })
       .catch((error) => {
+        setFormError("Not submitted!");
         console.log("Error submitting data.", error);
       });
     console.log("Form Data Submitted:", data);
@@ -137,10 +138,11 @@ const Register = () => {
               {success}
             </span>
           )}
+          {formError && <span style={{ color: "red" }}>{formError}</span>}
         </form>
         <div className="login">
           <p>
-            Already have an account? <NavLink>Login</NavLink>
+            Already have an account? <NavLink to={"/login"}>Login!</NavLink>
           </p>
         </div>
       </div>
