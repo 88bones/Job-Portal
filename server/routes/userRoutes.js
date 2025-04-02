@@ -1,9 +1,9 @@
 const express = require("express");
 const UserModel = require("../models/userModel");
+const bcrypt = require("bcrypt");
 
 const router = express.Router();
 
-//create user
 router.post("/createUser", async (req, res) => {
   const user = req.body;
   const newUser = new UserModel(user);
@@ -12,7 +12,6 @@ router.post("/createUser", async (req, res) => {
   res.json(user);
 });
 
-//get users
 router.get("/getUsers", async (req, res) => {
   try {
     const result = await UserModel.find({});

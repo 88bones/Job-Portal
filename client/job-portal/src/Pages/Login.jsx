@@ -1,29 +1,32 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 import "../Css/Register.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // console.log(email, password);
-  //   axios
-  //     .post("http://localhost:3001/api/login/login", { email, password })
-  //     .then((result) => {
-  //       console.log(result);
-  //       if (result.data === "Success") {
-  //         navigate("/");
-  //       } else {
-  //         navigate("/register");
-  //       }
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    axios
+      .post("http://localhost:3001/api/login/loginUsers", { email, password })
+      .then((result) => {
+        console.log(result);
+        if (result.data.status === "Success") {
+          navigate("/");
+        } else {
+          navigate("/");
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="form-container">
