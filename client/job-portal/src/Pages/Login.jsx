@@ -19,10 +19,10 @@ const Login = () => {
       .post("http://localhost:3001/api/login/loginUsers", { email, password })
       .then((result) => {
         console.log(result);
-        if (result.data.status === "Success") {
+        if (result.data === "Success") {
           navigate("/");
         } else {
-          navigate("/");
+          setError("Error");
         }
       })
       .catch((error) => console.log(error));
@@ -52,6 +52,7 @@ const Login = () => {
             Login
           </button>
         </form>
+        {error && <span className="login-error">{error}</span>}
         <div className="login">
           <p>
             Don't have an account? <NavLink to={"/register"}>Regsiter!</NavLink>
