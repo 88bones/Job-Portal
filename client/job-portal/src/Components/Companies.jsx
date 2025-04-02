@@ -13,14 +13,15 @@ const Companies = () => {
   ];
   const [listOfRecruiters, setListOfRecruiters] = useState([]);
   const [selectedIndustry, setSelectedIndustry] = useState();
-
+  const [error, setError] = useState("");
   useEffect(() => {
     axios
-      .get("http://localhost:3001/getRecruiters")
+      .get("http://localhost:3001/api/recruiters/getRecruiters")
       .then((response) => {
         setListOfRecruiters(response.data);
       })
       .catch((error) => console.log("Error fetching users: ", error));
+    setError(error);
   }, []);
 
   const filteredIndustry =
@@ -67,6 +68,7 @@ const Companies = () => {
               </tr>
             ))}
           </tbody>
+          {error && <span>{error}</span>}
         </table>
       </div>
     </div>

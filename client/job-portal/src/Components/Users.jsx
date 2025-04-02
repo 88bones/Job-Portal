@@ -8,7 +8,7 @@ const Users = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/getUsers")
+      .get("http://localhost:3001/api/users/getUsers")
       .then((response) => {
         setListOfUsers(response.data);
       })
