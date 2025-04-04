@@ -25,7 +25,7 @@ const Login = () => {
           setError("Error");
         }
       })
-      .catch((error) => console.log(error));
+      .catch(() => setError("Credentials are incorrect!"));
   };
 
   return (

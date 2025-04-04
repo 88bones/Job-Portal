@@ -3,7 +3,6 @@ const RecruiterModel = require("../models/recruiterModel");
 
 const router = express.Router();
 
-// Get all recruiters
 router.get("/getRecruiters", async (req, res) => {
   try {
     const result = await RecruiterModel.find({});
@@ -13,7 +12,6 @@ router.get("/getRecruiters", async (req, res) => {
   }
 });
 
-// Create a new recruiter
 router.post("/createRecruiter", async (req, res) => {
   const recruiter = req.body;
   const newRecruiter = new RecruiterModel(recruiter);
