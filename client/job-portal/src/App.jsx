@@ -11,10 +11,12 @@ import Recruiter from "./Components/Recruiter";
 import Companies from "./Components/Companies";
 import { useState } from "react";
 import Login from "./Pages/Login";
+import Dashboard from "./Pages/Dashboard";
 
 function App() {
   const [isOver, setIsOver] = useState(false);
   const [fullname, setFullname] = useState("");
+  const [role, setRole] = useState("");
   return (
     <Router>
       {/* <NavBar /> */}
@@ -27,6 +29,8 @@ function App() {
               setIsOver={setIsOver}
               fullname={fullname}
               setFullname={setFullname}
+              role={role}
+              setRole={setRole}
             />
           }
         />
@@ -39,8 +43,16 @@ function App() {
         <Route path="/recruiter" element={<Recruiter />} />
         <Route
           path="/login"
-          element={<Login fullname={fullname} setFullname={setFullname} />}
+          element={
+            <Login
+              fullname={fullname}
+              setFullname={setFullname}
+              role={role}
+              setRole={setRole}
+            />
+          }
         />
+        <Route path="/dashboard" element={<Dashboard />} />
 
         {/* admin */}
         <Route path="/admin" element={<Admin />}>

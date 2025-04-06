@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Css/Register.css";
 
-const Login = ({ fullname, setFullname }) => {
+const Login = ({ setFullname, setRole }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -21,6 +21,7 @@ const Login = ({ fullname, setFullname }) => {
         console.log(result.data);
         if (result.data.message === "Success") {
           setFullname(result.data.user.fullname);
+          setRole(result.data.user.role);
           navigate("/");
         } else {
           console.log("jumps to else");

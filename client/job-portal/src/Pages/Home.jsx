@@ -3,7 +3,7 @@ import Banner from "../Components/Banner.jsx";
 import NavBar from "../Components/NavBar.jsx";
 import Cards from "../Components/Cards.jsx";
 
-const Home = ({ isOver, setIsOver, fullname, setFullname }) => {
+const Home = ({ isOver, setIsOver, fullname, setFullname, role, setRole }) => {
   return (
     <div>
       <NavBar
@@ -11,6 +11,8 @@ const Home = ({ isOver, setIsOver, fullname, setFullname }) => {
         setIsOver={setIsOver}
         fullname={fullname}
         setFullname={setFullname}
+        setRole={setRole}
+        role={role}
       />
       <Banner isOver={isOver} />
       <Cards />

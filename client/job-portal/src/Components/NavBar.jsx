@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../Css/NavBar.css";
 
-const NavBar = ({ isOver, setIsOver, fullname }) => {
+const NavBar = ({ isOver, setIsOver, fullname, role }) => {
   const MenuItems = [
     { name: "Home", path: "/" },
     { name: "Jobs", path: "/Jobs" },
     { name: "About Us", path: "/Aboutus" },
-    { name: "Admin", path: "/Admin" },
+    // { name: "Admin", path: "/Admin" },
   ];
+
+  if (role === "admin") {
+    MenuItems.push({ name: "Admin", path: "/Admin" });
+  }
 
   return (
     <>
@@ -34,7 +38,12 @@ const NavBar = ({ isOver, setIsOver, fullname }) => {
           </div>
 
           <div className="account-centre">
-            {fullname && <span>Welcome, {fullname}!</span>}
+            {fullname && (
+              <span>
+                <NavLink to={"/dashboard"}>{fullname}</NavLink>
+              </span>
+            )}
+
             <button className="login-btn">
               <NavLink to={"/login"}> Login</NavLink>
             </button>
