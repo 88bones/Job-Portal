@@ -14,13 +14,21 @@ import Login from "./Pages/Login";
 
 function App() {
   const [isOver, setIsOver] = useState(false);
+  const [fullname, setFullname] = useState("");
   return (
     <Router>
       {/* <NavBar /> */}
       <Routes>
         <Route
           path="/"
-          element={<Home isOver={isOver} setIsOver={setIsOver} />}
+          element={
+            <Home
+              isOver={isOver}
+              setIsOver={setIsOver}
+              fullname={fullname}
+              setFullname={setFullname}
+            />
+          }
         />
         <Route
           path="/jobs"
@@ -29,7 +37,10 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/register" element={<Register />} />
         <Route path="/recruiter" element={<Recruiter />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login fullname={fullname} setFullname={setFullname} />}
+        />
 
         {/* admin */}
         <Route path="/admin" element={<Admin />}>

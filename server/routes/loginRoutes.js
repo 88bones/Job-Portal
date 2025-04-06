@@ -5,20 +5,29 @@ const router = express.Router();
 
 router.post("/loginUsers", async (req, res) => {
   const { email, password } = req.body;
-  try {
-    UserModel.findOne({ email: email }).then((user) => {
-      if (!user) {
-        return res.json.status(404).json("No record exists");
-      }
 
-      if (user.password === password) {
-        return res.status(200).json("Success");
-      } else {
-        return res.status(400).json("The credentials are incorrect");
-      }
-    });
+  try {
+    const user = await UserModel.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    if (user.password === password) {
+      return res.status(200).json({
+        message: "Success",
+        user: {
+          fullname: user.fullname,
+          email: user.email,
+          role: user.role,
+        },
+      });
+    } else {
+      return res.status(400).json({ message: "Invalid credentials" });
+    }
   } catch (err) {
-    res.status(500).json("Internal Server error");
+    console.error("Login error:", err);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Css/Register.css";
 
-const Login = () => {
+const Login = ({ fullname, setFullname }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -18,10 +18,12 @@ const Login = () => {
     axios
       .post("http://localhost:3001/api/login/loginUsers", { email, password })
       .then((result) => {
-        console.log(result);
-        if (result.data === "Success") {
+        console.log(result.data);
+        if (result.data.message === "Success") {
+          setFullname(result.data.user.fullname);
           navigate("/");
         } else {
+          console.log("jumps to else");
           setError("Error");
         }
       })
