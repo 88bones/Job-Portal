@@ -15,8 +15,10 @@ import Dashboard from "./Pages/Dashboard";
 
 function App() {
   const [isOver, setIsOver] = useState(false);
-  const [fullname, setFullname] = useState("");
-  const [role, setRole] = useState("");
+  const [fullname, setFullname] = useState(
+    localStorage.getItem("fullname") || ""
+  );
+  const [role, setRole] = useState(localStorage.getItem("role") || "");
   return (
     <Router>
       {/* <NavBar /> */}

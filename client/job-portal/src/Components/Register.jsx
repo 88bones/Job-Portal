@@ -43,6 +43,9 @@ const Register = () => {
       phone: data.phone,
     })
       .then((response) => {
+        const { token, user } = response.data;
+        localStorage.setItem("token", token);
+        // console.log("Token:", token);
         setSuccess("Account created successfully!");
         setData({
           fullname: "",

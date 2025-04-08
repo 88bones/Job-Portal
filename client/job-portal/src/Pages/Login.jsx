@@ -18,17 +18,24 @@ const Login = ({ setFullname, setRole }) => {
     axios
       .post("http://localhost:3001/api/login/loginUsers", { email, password })
       .then((result) => {
+        const { token, user } = result.data;
         console.log(result.data);
         if (result.data.message === "Success") {
-          setFullname(result.data.user.fullname);
-          setRole(result.data.user.role);
+          localStorage.setItem("token", token);
+          localStorage.setItem("fullname", user.fullname);
+          localStorage.setItem("role", user.role);
+          setFullname(user.fullname);
+          setRole(user.role);
           navigate("/");
         } else {
           console.log("jumps to else");
-          setError("Error");
+          setError("Credentials Invalid!!");
         }
       })
-      .catch(() => setError("Credentials are incorrect!"));
+      .catch((err) => {
+        setError("error:");
+        console.log(err);
+      });
   };
 
   return (

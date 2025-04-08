@@ -1,5 +1,6 @@
 const express = require("express");
 const UserModel = require("../models/userModel");
+const jwtGenerator = require("../utils/jwtGenerator");
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router.post("/loginUsers", async (req, res) => {
     }
 
     if (user.password === password) {
+      const token = jwtGenerator(user._id);
       return res.status(200).json({
         message: "Success",
         user: {
@@ -21,6 +23,7 @@ router.post("/loginUsers", async (req, res) => {
           email: user.email,
           role: user.role,
         },
+        token,
       });
     } else {
       return res.status(400).json({ message: "Invalid credentials" });
