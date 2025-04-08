@@ -19,7 +19,6 @@ const NavBar = ({ isOver, setIsOver, fullname, role }) => {
       <nav className="navbar">
         <header>
           <h1 className="site-name">JobPortal</h1>
-
           <div className="menu-items">
             <ul>
               {MenuItems.map((item, index) => (

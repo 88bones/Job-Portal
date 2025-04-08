@@ -1,9 +1,11 @@
 import React from "react";
+import "../Css/Admin.css";
+import UserSideBar from "../Components/UserSideBar";
 
 const Dashboard = () => {
   return (
-    <div>
-      <h1>users dashboard</h1>
+    <div className="dashboard-container">
+      <UserSideBar />
     </div>
   );
 };

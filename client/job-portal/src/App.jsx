@@ -39,6 +39,8 @@ function App() {
           element={<Jobs isOver={isOver} setIsOver={setIsOver} />}
         />
         <Route path="/aboutus" element={<AboutUs />} />
+
+        {/* registers/logins */}
         <Route path="/register" element={<Register />} />
         <Route path="/recruiter" element={<Recruiter />} />
         <Route

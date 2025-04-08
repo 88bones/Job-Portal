@@ -10,7 +10,6 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      <h1>hello</h1>
       <div className="profile-options">
         <ul type="none">
           {options.map((option, index) => (
