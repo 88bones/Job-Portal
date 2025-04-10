@@ -4,6 +4,7 @@ const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
 const recruiterRoutes = require("./routes/recruiterRoutes");
 const loginRoutes = require("./routes/loginRoutes");
+const jobRoutes = require("./routes/jobRoutes");
 
 const app = express();
 app.use(express.json());
@@ -17,6 +18,7 @@ mongoose
 app.use("/api/users", userRoutes);
 app.use("/api/recruiters", recruiterRoutes);
 app.use("/api/login", loginRoutes);
+app.use("/api/jobs", jobRoutes);
 
 app.listen(3001, () => {
   console.log("app is running ");

@@ -7,7 +7,7 @@ const UserSideBar = () => {
     { name: "Profile", path: "" },
     { name: "Applied Jobs", path: "" },
     { name: "Applications", path: "" },
-    { name: "Something", path: "" },
+    { name: "Create Jobs", path: "/dashboard/createjobs" },
   ];
   return (
     <div className="side-bar-container">

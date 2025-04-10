@@ -12,6 +12,7 @@ import Companies from "./Components/Companies";
 import { useState } from "react";
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
+import CreateJobs from "./Components/CreateJobs";
 
 function App() {
   const [isOver, setIsOver] = useState(false);
@@ -56,12 +57,15 @@ function App() {
             />
           }
         />
-        <Route path="/dashboard" element={<Dashboard />} />
-
         {/* admin */}
         <Route path="/admin" element={<Admin />}>
           <Route path="users" element={<Users />} />
           <Route path="companies" element={<Companies />} />
+        </Route>
+
+        {/* dashboard users */}
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="createjobs" element={<CreateJobs />} />
         </Route>
       </Routes>
     </Router>

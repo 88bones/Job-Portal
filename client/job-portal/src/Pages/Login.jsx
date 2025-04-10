@@ -41,7 +41,7 @@ const Login = ({ setFullname, setRole }) => {
   return (
     <div className="form-container">
       <div className="form-sub">
-        <h2>Login as a candidate.</h2>
+        <h2>Login.</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="email"
