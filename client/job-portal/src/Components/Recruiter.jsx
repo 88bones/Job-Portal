@@ -45,6 +45,8 @@ const Recruiter = () => {
       address: data.address,
     })
       .then((response) => {
+        const { token } = response.data;
+        localStorage.setItem("token", token);
         setSuccess("Account registered successfully!");
         setData({
           companyname: "",

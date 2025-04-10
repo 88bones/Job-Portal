@@ -1,5 +1,6 @@
 const express = require("express");
 const UserModel = require("../models/userModel");
+const RecruiterModel = require("../models/recruiterModel");
 const jwtGenerator = require("../utils/jwtGenerator");
 
 const router = express.Router();
@@ -9,19 +10,22 @@ router.post("/loginUsers", async (req, res) => {
 
   try {
     const user = await UserModel.findOne({ email });
+    const recruiter = await RecruiterModel.findOne({ email });
 
-    if (!user) {
+    if (!user && !recruiter) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    if (user.password === password) {
-      const token = jwtGenerator(user._id);
+    const account = user || recruiter;
+
+    if (account.password === password) {
+      const token = jwtGenerator(account._id);
       return res.status(200).json({
         message: "Success",
         user: {
-          fullname: user.fullname,
-          email: user.email,
-          role: user.role,
+          fullname: user ? user.fullname : recruiter.companyname,
+          email: account.email,
+          role: account.role,
         },
         token,
       });

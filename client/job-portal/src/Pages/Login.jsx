@@ -7,12 +7,12 @@ const Login = ({ setFullname, setRole }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
+    // setLoading(true);
     setError("");
 
     axios
@@ -33,7 +33,7 @@ const Login = ({ setFullname, setRole }) => {
         }
       })
       .catch((err) => {
-        setError("error:");
+        setError("error: err");
         console.log(err);
       });
   };
@@ -41,7 +41,7 @@ const Login = ({ setFullname, setRole }) => {
   return (
     <div className="form-container">
       <div className="form-sub">
-        <h2>Login.</h2>
+        <h2>Login as a candidate.</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="email"
