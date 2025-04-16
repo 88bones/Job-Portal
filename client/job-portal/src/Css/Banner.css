@@ -1,0 +1,54 @@
+.banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh; 
+    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url("../Images/banner.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.profile-container{
+    position: absolute;
+    z-index: 1000;
+}
+
+.banner-sub {
+    text-align: center;
+    font-size: 1.3rem;
+    width: 50%;
+}
+
+.banner-sub h1{
+    color: var(--background);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 4rem;
+}
+
+.banner-sub p{
+    color: var(--background);
+    font-family: var(--font-heading);
+    font-weight: 100;
+    font-size: 1rem;
+}
+
+.job-params {
+    margin-top: 20px;
+}
+
+.job-params input, .job-params select {
+    margin: 2px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 20%;
+}
+
+.account-centre img{
+    filter: brightness(0) saturate(100%) invert(45%) sepia(100%) hue-rotate(180deg);
+
+}

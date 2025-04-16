@@ -1,0 +1,41 @@
+.job-create-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.job-header h2 {
+    margin-bottom: 2rem;
+}
+
+.job-create-container form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.job-create-container .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.job-create-container  form textarea,
+.job-create-container  form input,
+.job-create-container  form select {
+    padding: 10px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+form button {
+    grid-column: span 2;
+    padding: 1rem;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}

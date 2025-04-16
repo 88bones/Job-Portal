@@ -1,0 +1,43 @@
+.users-container header{
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+.users-container table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-container thead{
+    font-size:1.2rem;
+}
+
+.users-container th{
+    background:var(--sub-back );
+    padding: 8px 0px;
+}
+
+.users-container td{
+    padding: 6px 0px;
+    text-align: center;
+    font-weight:500 ;
+
+}
+
+.users-container tr:nth-child(odd){
+    background-color: var(--sub-background);
+}
+.action{
+    display: flex;
+    gap: 5px;
+}
+.users-container td button{
+    width: 50%;
+    border: none;
+    padding: 6px 2px;
+    background: var(--text);
+    font-weight: 700;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}

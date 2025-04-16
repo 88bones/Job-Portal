@@ -1,0 +1,65 @@
+nav{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    border-bottom: 0.5px inset var(--sub-background);
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    padding: 10px;
+    align-items: center;
+}
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 50px;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: var(--text)
+}
+.navbar a:hover{
+    text-shadow: 2px 2px 8px var(--heading);
+}
+
+.navbar .active-link {
+    font-weight: bold;
+    color: var(--hover)
+}
+
+.site-name{
+    color: var(--heading);
+    font-size: 28px;
+}
+
+.account-centre{
+    display: flex;
+    gap: 10px;
+}
+
+.account-centre button{
+    background-color: var(--text);
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: var(--background);
+    font-size: 0.9rem;
+}
+
+.account-centre .login-btn {
+    background-color: var(--background);
+    border: 0.5px solid var(--sub-background);
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+.login-btn a{
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem;
+}

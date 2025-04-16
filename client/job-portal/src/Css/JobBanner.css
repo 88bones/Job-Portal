@@ -1,0 +1,47 @@
+.job-banner-container{
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 1px 4px var(--sub-back);
+}
+.filters{
+    display: flex;
+    width: 60%;
+}
+.filter-container{
+    padding: 10px;
+    border-right: 1px solid var(--sub-background);
+}
+
+.filter-container select{
+    background-color:var(--text);
+    padding: 8px 5px ;
+    border: none;
+    border-radius: 8px;
+    color:var(--background);
+    cursor: pointer;
+    font-weight:600;
+    font-size:medium;
+}
+
+.time-dropdown-content option,.industry-filter option{
+    background: var(--background);
+    color: var(--button);
+    font-weight: 500;
+}
+
+.industry-filter{
+    padding: 10px;
+}
+
+.industry-filter select{
+    background-color:var(--background);
+    padding: 8px 5px ;
+    border: 0.5px solid var(--sub-background);
+    border-radius: 8px;
+    color:var(--text);
+    cursor: pointer;
+    font-weight:600;
+    font-size:medium;
+}
