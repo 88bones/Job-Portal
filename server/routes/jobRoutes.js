@@ -10,4 +10,13 @@ router.post("/createJob", async (req, res) => {
   res.json(newJob);
 });
 
+router.get("/getJobs", async (req, res) => {
+  try {
+    const result = await JobModel.find({});
+    res.json(result);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 module.exports = router;

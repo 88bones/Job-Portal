@@ -39,7 +39,15 @@ function App() {
         />
         <Route
           path="/jobs"
-          element={<Jobs isOver={isOver} setIsOver={setIsOver} />}
+          element={
+            <Jobs
+              isOver={isOver}
+              setIsOver={setIsOver}
+              fullname={fullname}
+              setFullname={setFullname}
+              role={role}
+            />
+          }
         />
         <Route path="/aboutus" element={<AboutUs />} />
 

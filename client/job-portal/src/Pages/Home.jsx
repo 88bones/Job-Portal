@@ -2,6 +2,7 @@ import React from "react";
 import Banner from "../Components/Banner.jsx";
 import NavBar from "../Components/NavBar.jsx";
 import Cards from "../Components/Cards.jsx";
+import JobListings from "../Components/JobListings.jsx";
 
 const Home = ({ isOver, setIsOver, fullname, setFullname, role, setRole }) => {
   return (
@@ -16,6 +17,7 @@ const Home = ({ isOver, setIsOver, fullname, setFullname, role, setRole }) => {
       />
       <Banner isOver={isOver} />
       <Cards />
+      <JobListings />
     </div>
   );
 };
