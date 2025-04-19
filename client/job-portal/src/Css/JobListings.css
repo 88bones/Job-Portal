@@ -1,0 +1,103 @@
+.jobs-grid-container {
+    padding: 20px;
+    justify-content: center;
+}
+
+.job-grid-box{
+    background-color: saddlebrown;
+
+    width: 70%;
+}
+
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    width: 70%;
+}
+
+.job-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+}
+
+.job-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.company-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.company-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.company-name {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.posted-days {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.job-title {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.tag {
+    background-color: #f2f2f2;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.salary {
+    font-weight: bold;
+    color: #333;
+}
+
+.apply-button {
+    padding: 6px 12px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.apply-button:hover {
+    background-color: #555;
+}

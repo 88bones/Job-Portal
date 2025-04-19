@@ -12,7 +12,7 @@ router.post("/createJob", async (req, res) => {
 
 router.get("/getJobs", async (req, res) => {
   try {
-    const result = await JobModel.find({});
+    const result = await JobModel.find({}).populate("postedBy", "companyname");
     res.json(result);
   } catch (err) {
     res.json(err);

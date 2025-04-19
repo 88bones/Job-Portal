@@ -31,6 +31,10 @@ const recruiterSchema = new mongoose.Schema({
     type: String,
     default: "recruiter",
   },
+  image: {
+    type: "String",
+    default: "Uploads/recDefault.png",
+  },
 });
 
 const recruiterModel = mongoose.model("recruiter", recruiterSchema);
