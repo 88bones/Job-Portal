@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import Account from "../Images/account.svg";
 import { NavLink } from "react-router-dom";
 import "../Css/NavBar.css";
 
-const NavBar = ({ isOver, setIsOver, fullname, role }) => {
+const NavBar = ({ isOver, setIsOver, fullname, role, loggedIn }) => {
   const MenuItems = [
     { name: "Home", path: "/" },
     { name: "Jobs", path: "/Jobs" },
@@ -39,17 +40,23 @@ const NavBar = ({ isOver, setIsOver, fullname, role }) => {
           <div className="account-centre">
             {fullname && (
               <span className="fullname-disp">
-                <NavLink to={"/dashboard"}>
-                  <img src="../Images/account.svg"></img>
-                  {fullname}
-                </NavLink>
+                <img src={Account} width="20px"></img>
+                <NavLink to={"/dashboard"}>{fullname}</NavLink>
               </span>
             )}
 
-            <button className="login-btn">
-              <NavLink to={"/login"}> Login</NavLink>
-            </button>
-            <button onClick={() => setIsOver(!isOver)}>Register</button>
+            {loggedIn ? (
+              <>
+                <button className="login-btn">
+                  <NavLink to={"/login"}> Login</NavLink>
+                </button>
+                <button onClick={() => setIsOver(!isOver)}>Register</button>
+              </>
+            ) : (
+              <button className="login-btn">
+                <NavLink to={""}> LogOut</NavLink>
+              </button>
+            )}
           </div>
         </header>
       </nav>

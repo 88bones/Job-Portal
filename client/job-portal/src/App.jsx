@@ -20,7 +20,7 @@ function App() {
     localStorage.getItem("fullname") || ""
   );
   const [role, setRole] = useState(localStorage.getItem("role") || "");
-  const [id, setId] = useState(localStorage.getItem("_id") || "");
+  const [loggedIn, setIsLoggedIn] = useState(false);
   return (
     <Router>
       {/* <NavBar /> */}
@@ -34,6 +34,8 @@ function App() {
               fullname={fullname}
               setFullname={setFullname}
               role={role}
+              loggedIn={loggedIn}
+              setIsLoggedIn={setIsLoggedIn}
             />
           }
         />
@@ -62,6 +64,8 @@ function App() {
               setFullname={setFullname}
               role={role}
               setRole={setRole}
+              loggedIn={loggedIn}
+              setIsLoggedIn={setIsLoggedIn}
             />
           }
         />

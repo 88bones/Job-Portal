@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../Css/Register.css";
 
-const Login = ({ setFullname, setRole }) => {
+const Login = ({ setFullname, setRole, setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -28,6 +28,7 @@ const Login = ({ setFullname, setRole }) => {
           console.log("UserId: ", user._id);
           setFullname(user.fullname);
           setRole(user.role);
+          setIsLoggedIn(true);
           navigate("/");
         } else {
           console.log("jumps to else");

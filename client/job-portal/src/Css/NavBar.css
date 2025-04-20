@@ -46,7 +46,7 @@ header{
 .account-centre button{
     background-color: var(--text);
     border: none;
-    padding: 10px 14px;
+    padding: 8px 14px;
     border-radius: 8px;
     color: var(--background);
     font-size: 0.9rem;
@@ -55,7 +55,7 @@ header{
 .account-centre .login-btn {
     background-color: var(--background);
     border: 0.5px solid var(--sub-background);
-    padding: 10px 14px;
+    padding: 8px 14px;
     border-radius: 8px;
 }
 
@@ -63,6 +63,10 @@ header{
     text-decoration: none;
     color: var(--text);
     font-size: 0.9rem;
+}
+
+.fullname-disp{
+    display: flex;
 }
 
 .fullname-disp a{
