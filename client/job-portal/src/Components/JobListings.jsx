@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import "../Css/JobListings.css";
 
@@ -27,35 +28,35 @@ const JobListings = () => {
   return (
     <div className="jobs-grid-container">
       <h2>Available Jobs</h2>
-      <div className="jobs-grid-box">
-        <div className="jobs-grid">
-          {listOfJobs.map((job) => (
-            <div key={job._id} className="job-card">
-              <div className="job-header">
-                <img
-                  src={job.postedBy?.image || "/Uploads/recDefault.png"}
-                  alt="Company Logo"
-                  className="company-logo"
-                />
-                <div className="company-info">
-                  <p className="company-name">{job.postedBy?.companyname}</p>
-                  <p className="posted-days">
-                    {getDaysRemaining(job.expiryDate)} days left
-                  </p>
-                </div>
-              </div>
-              <h3 className="job-title">{job.title}</h3>
-              <div className="tags">
-                <span className="tag">{job.emptype}</span>
-                <span className="tag">{job.level}</span>
-                <span className="tag">{job.address}</span>
-              </div>
-              <div className="footer">
-                <button className="apply-button">Apply now</button>
+      <div className="jobs-grid">
+        {listOfJobs.map((job) => (
+          <div key={job._id} className="job-card">
+            <div className="job-header">
+              <img
+                src={job.postedBy?.image || "/Uploads/recDefault.png"}
+                alt="Company Logo"
+                className="company-logo"
+              />
+              <div className="company-info">
+                <p className="company-name">{job.postedBy?.companyname}</p>
+                <p className="posted-days">
+                  {getDaysRemaining(job.expiryDate)} days left
+                </p>
               </div>
             </div>
-          ))}
-        </div>
+            <h3 className="job-title">{job.title}</h3>
+            <div className="tags">
+              <span className="tag">{job.emptype}</span>
+              <span className="tag">{job.level}</span>
+              <span className="tag">{job.address}</span>
+            </div>
+            <div className="footer">
+              <button className="apply-button">
+                <NavLink>Apply now</NavLink>
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
