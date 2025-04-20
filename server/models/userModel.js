@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "user",
   },
+  skills: {
+    type: [String],
+    default: [],
+  },
 });
 
 const UserModel = mongoose.model("user", userSchema);

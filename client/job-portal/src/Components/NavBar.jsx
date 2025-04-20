@@ -38,8 +38,11 @@ const NavBar = ({ isOver, setIsOver, fullname, role }) => {
 
           <div className="account-centre">
             {fullname && (
-              <span>
-                <NavLink to={"/dashboard"}>{fullname}</NavLink>
+              <span className="fullname-disp">
+                <NavLink to={"/dashboard"}>
+                  <img src="../Images/account.svg"></img>
+                  {fullname}
+                </NavLink>
               </span>
             )}
 

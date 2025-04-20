@@ -39,6 +39,7 @@ header{
 
 .account-centre{
     display: flex;
+    align-items: center;
     gap: 10px;
 }
 
@@ -63,3 +64,12 @@ header{
     color: var(--text);
     font-size: 0.9rem;
 }
+
+.fullname-disp a{
+    text-decoration: none;
+    color: var(--heading);
+    font-weight: 700;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
