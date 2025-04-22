@@ -1,19 +1,36 @@
 import React, { useEffect, useState } from "react";
 import Account from "../Images/account.svg";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../Css/NavBar.css";
 
-const NavBar = ({ isOver, setIsOver, fullname, role, loggedIn }) => {
+const NavBar = ({
+  isOver,
+  setIsOver,
+  fullname,
+  role,
+  loggedIn,
+  setIsLoggedIn,
+}) => {
   const MenuItems = [
     { name: "Home", path: "/" },
     { name: "Jobs", path: "/Jobs" },
     { name: "About Us", path: "/Aboutus" },
-    // { name: "Admin", path: "/Admin" },
   ];
 
   if (role === "admin") {
     MenuItems.push({ name: "Admin", path: "/Admin" });
   }
+
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("fullname");
+    localStorage.removeItem("role");
+    setIsLoggedIn(false);
+    navigate("/");
+  };
 
   return (
     <>
@@ -38,7 +55,7 @@ const NavBar = ({ isOver, setIsOver, fullname, role, loggedIn }) => {
           </div>
 
           <div className="account-centre">
-            {fullname && (
+            {loggedIn && fullname && (
               <span className="fullname-disp">
                 <img src={Account} width="20px"></img>
                 <NavLink to={"/dashboard"}>{fullname}</NavLink>
@@ -46,16 +63,16 @@ const NavBar = ({ isOver, setIsOver, fullname, role, loggedIn }) => {
             )}
 
             {loggedIn ? (
+              <button className="logout-btn" onClick={handleLogOut}>
+                LogOut
+              </button>
+            ) : (
               <>
                 <button className="login-btn">
                   <NavLink to={"/login"}> Login</NavLink>
                 </button>
                 <button onClick={() => setIsOver(!isOver)}>Register</button>
               </>
-            ) : (
-              <button className="login-btn">
-                <NavLink to={""}> LogOut</NavLink>
-              </button>
             )}
           </div>
         </header>
