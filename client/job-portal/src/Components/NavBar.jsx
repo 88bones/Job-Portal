@@ -18,7 +18,7 @@ const NavBar = ({
     { name: "About Us", path: "/Aboutus" },
   ];
 
-  if (role === "admin") {
+  if (loggedIn && role === "admin") {
     MenuItems.push({ name: "Admin", path: "/Admin" });
   }
 
