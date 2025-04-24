@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import "../Css/JobListings.css";
+import recDefault from "../Images/recDefault.png";
 
 const JobListings = () => {
   const [listOfJobs, setListOfJobs] = useState([]);
@@ -33,7 +34,8 @@ const JobListings = () => {
           <div key={job._id} className="job-card">
             <div className="job-header">
               <img
-                src={job.postedBy?.image || "/Uploads/recDefault.png"}
+                // src={job.postedBy?.image || { recDefault }}
+                src={recDefault}
                 alt="Company Logo"
                 className="company-logo"
               />

@@ -32,6 +32,13 @@ const NavBar = ({
     navigate("/");
   };
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
     <>
       <nav className="navbar">
