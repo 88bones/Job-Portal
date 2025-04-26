@@ -9,7 +9,7 @@ import Register from "./Components/Register";
 import Users from "./Components/Users";
 import Recruiter from "./Components/Recruiter";
 import Companies from "./Components/Companies";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
 import CreateJobs from "./Components/CreateJobs";
@@ -22,6 +22,7 @@ function App() {
   );
   const [role, setRole] = useState(localStorage.getItem("role") || "");
   const [loggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <Router>
       {/* <NavBar /> */}
@@ -49,6 +50,8 @@ function App() {
               fullname={fullname}
               setFullname={setFullname}
               role={role}
+              loggedIn={loggedIn}
+              setIsLoggedIn={setIsLoggedIn}
             />
           }
         />
@@ -71,13 +74,16 @@ function App() {
           }
         />
         {/* admin */}
-        <Route path="/admin" element={<Admin />}>
+        <Route path="/admin" element={<Admin loggedIn={loggedIn} />}>
           <Route path="users" element={<Users />} />
           <Route path="companies" element={<Companies />} />
         </Route>
 
         {/* dashboard users */}
-        <Route path="/dashboard" element={<Dashboard fullname={fullname} />}>
+        <Route
+          path="/dashboard"
+          element={<Dashboard fullname={fullname} loggedIn={loggedIn} />}
+        >
           <Route
             path="createjobs"
             element={<CreateJobs fullname={fullname} />}

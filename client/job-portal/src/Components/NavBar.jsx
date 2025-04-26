@@ -35,10 +35,11 @@ const NavBar = ({
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+
     if (token) {
       setIsLoggedIn(true);
     }
-  }, []);
+  }, [setIsLoggedIn]);
 
   return (
     <>

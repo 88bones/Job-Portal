@@ -5,7 +5,7 @@ import "../Css/UpdateUsers.css";
 const UpdateUsers = () => {
   const userData = localStorage.getItem("user");
   const parsedData = JSON.parse(userData);
-  console.log(parsedData["phone"]);
+  console.log(parsedData["fullname"]);
 
   return (
     <div className="user-form-container">
@@ -17,6 +17,7 @@ const UpdateUsers = () => {
             type="file"
             name="image"
             placeholder="Image URL"
+
             // value={user.image}
             // onChange={handleChange}
           />
