@@ -3,7 +3,7 @@ import Profile from "../Pages/Profile";
 import NavBar from "./NavBar";
 import "../Css/Banner.css";
 
-const Banner = ({ isOver, setisOver }) => {
+const Banner = ({ isOver }) => {
   return (
     <>
       <div className="banner-main-container">
@@ -11,7 +11,7 @@ const Banner = ({ isOver, setisOver }) => {
           {isOver == true ? (
             <div>
               <Profile />
-              {console.log("hello mate")}
+              {/* {console.log("hello mate")} */}
             </div>
           ) : (
             ""

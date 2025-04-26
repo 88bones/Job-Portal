@@ -1,0 +1,40 @@
+.user-form-container{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.form-heading{
+    margin-bottom: 2rem;
+}
+
+.user-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.user-form input[type="text"],
+.user-form input[type="email"]{
+    padding: 10px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+
+input::file-selector-button{
+    background-color: var(--sub-back);
+    border: none;
+    padding: 6px 12px;
+    color: var(--heading);
+    font-size: 14px;
+    border-radius: 10px ;
+}
+
+.image,.resume{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+}

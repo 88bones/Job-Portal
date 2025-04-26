@@ -13,6 +13,7 @@ import { useState } from "react";
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
 import CreateJobs from "./Components/CreateJobs";
+import UpdateUsers from "./Components/UpdateUsers";
 
 function App() {
   const [isOver, setIsOver] = useState(false);
@@ -81,6 +82,7 @@ function App() {
             path="createjobs"
             element={<CreateJobs fullname={fullname} />}
           />
+          <Route path="updateUsers" element={<UpdateUsers />} />
         </Route>
       </Routes>
     </Router>

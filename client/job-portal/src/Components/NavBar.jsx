@@ -28,6 +28,7 @@ const NavBar = ({
     localStorage.removeItem("token");
     localStorage.removeItem("fullname");
     localStorage.removeItem("role");
+    localStorage.removeItem("user");
     setIsLoggedIn(false);
     navigate("/");
   };

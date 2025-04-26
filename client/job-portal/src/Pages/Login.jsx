@@ -19,13 +19,16 @@ const Login = ({ setFullname, setRole, setIsLoggedIn }) => {
       .post("http://localhost:3001/api/login/loginUsers", { email, password })
       .then((result) => {
         const { token, user } = result.data;
-        console.log(result.data);
+        // console.log(result.data);
         if (result.data.message === "Success") {
           localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify(user));
           localStorage.setItem("fullname", user.fullname);
           localStorage.setItem("role", user.role);
           localStorage.setItem("_id", user._id);
-          console.log("UserId: ", user._id);
+          localStorage.setItem("address", user.address);
+          localStorage.setItem("phone", user.phone);
+          // console.log("UserId: ", user._id);
           setFullname(user.fullname);
           setRole(user.role);
           setIsLoggedIn(true);

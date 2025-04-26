@@ -4,7 +4,7 @@ import "../Css/SideBar.css";
 
 const UserSideBar = ({ fullname }) => {
   const barItems = [
-    { name: "Profile", path: "" },
+    { name: "Profile", path: "/dashboard/updateUsers" },
     { name: "Applied Jobs", path: "" },
     { name: "Applications", path: "" },
     { name: "Create Jobs", path: "/dashboard/createjobs" },

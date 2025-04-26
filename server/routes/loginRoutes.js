@@ -27,6 +27,8 @@ router.post("/loginUsers", async (req, res) => {
           fullname: user ? user.fullname : recruiter.companyname,
           email: account.email,
           role: account.role,
+          address: account.address,
+          phone: account.phone,
         },
         token,
       });
