@@ -26,11 +26,12 @@ const NavBar = ({
 
   const handleLogOut = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("_id");
     localStorage.removeItem("fullname");
     localStorage.removeItem("role");
     localStorage.removeItem("user");
     setIsLoggedIn(false);
-    // navigate("/");
+    navigate("/");
   };
 
   useEffect(() => {

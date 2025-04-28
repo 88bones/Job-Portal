@@ -39,6 +39,8 @@ function App() {
               role={role}
               loggedIn={loggedIn}
               setIsLoggedIn={setIsLoggedIn}
+              _id={_id}
+              setId={setId}
             />
           }
         />

@@ -4,7 +4,7 @@ import UserSideBar from "../Components/UserSideBar";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const Dashboard = ({ fullname, loggedIn }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // useEffect(() => {
   //   if (!loggedIn) {
@@ -14,14 +14,12 @@ const Dashboard = ({ fullname, loggedIn }) => {
 
   return (
     <>
-      {loggedIn && (
-        <div className="dashboard-container">
-          <UserSideBar fullname={fullname} />
-          <div className="dashboard-content">
-            <Outlet />
-          </div>
+      <div className="dashboard-container">
+        <UserSideBar fullname={fullname} />
+        <div className="dashboard-content">
+          <Outlet />
         </div>
-      )}
+      </div>
     </>
   );
 };

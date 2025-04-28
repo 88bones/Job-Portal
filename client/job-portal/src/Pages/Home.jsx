@@ -13,6 +13,8 @@ const Home = ({
   setRole,
   loggedIn,
   setIsLoggedIn,
+  _id,
+  setId,
 }) => {
   return (
     <div>
@@ -25,6 +27,8 @@ const Home = ({
         role={role}
         loggedIn={loggedIn}
         setIsLoggedIn={setIsLoggedIn}
+        _id={_id}
+        setId={setId}
       />
       <Banner isOver={isOver} />
       <Cards />

@@ -15,10 +15,9 @@ const UpdateUsers = ({ _id }) => {
     phone: "",
     resume: "",
     image: "",
-    skill: [],
+    skills: [],
   });
 
-  console.log(_id);
   useEffect(() => {
     if (_id) {
       axios
@@ -28,13 +27,11 @@ const UpdateUsers = ({ _id }) => {
           setData({
             fullname: user.fullname || "",
             email: user.email || "",
-            password: "",
-            repassword: "",
             address: user.address || "",
             phone: user.phone || "",
             resume: "",
             image: "",
-            skill: user.skill || [],
+            skills: Array.isArray(user.skills) ? user.skills : [],
           });
         })
         .catch((err) => {
@@ -96,13 +93,13 @@ const UpdateUsers = ({ _id }) => {
           onChange={handleChange}
         />
 
-        <input
+        {/* <input
           type="text"
           name="password"
           placeholder="Password"
           value={data.password}
           onChange={handleChange}
-        />
+        /> */}
 
         <input
           type="text"
@@ -124,14 +121,15 @@ const UpdateUsers = ({ _id }) => {
           type="text"
           name="skill"
           placeholder="Skills (comma separated)"
-          value={data.skill.join(", ")}
+          value={Array.isArray(data.skills) ? data.skills.join(", ") : ""}
           onChange={(e) =>
             setData({
               ...data,
-              skill: e.target.value.split(",").map((s) => s.trim()),
+              skills: e.target.value.split(",").map((s) => s.trim()),
             })
           }
         />
+        <br />
 
         <div className="resume">
           <label htmlFor="">Resume:</label>
