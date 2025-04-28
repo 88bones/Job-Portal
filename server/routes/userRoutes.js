@@ -36,4 +36,19 @@ router.get("/getUser/:id", async (req, res) => {
   }
 });
 
+router.put("/updateUser/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const updatedData = req.body;
+
+    const updatedUser = await UserModel.findByIdAndUpdate(userId, updatedData, {
+      new: true,
+    });
+    res.json(updatedUser);
+    res.json({ message: "updated user" });
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 module.exports = router;
