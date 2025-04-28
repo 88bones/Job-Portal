@@ -45,7 +45,6 @@ router.put("/updateUser/:id", async (req, res) => {
       new: true,
     });
     res.json(updatedUser);
-    res.json({ message: "updated user" });
   } catch (err) {
     res.json(err);
   }

@@ -5,6 +5,8 @@ import axios from "axios";
 
 const UpdateUsers = ({ _id }) => {
   const [imgError, setImgError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
   const [data, setData] = useState({
     fullname: "",
@@ -62,10 +64,24 @@ const UpdateUsers = ({ _id }) => {
     setData({ ...data, image: file });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .put(`http://localhost:3001/api/users/updateUser/${_id}`, data)
+      .then((response) => {
+        const user = response.data;
+        setSuccess("User updated!");
+      })
+      .catch((err) => {
+        setError("User NOT updated!");
+      });
+    console.log("Updated :", data);
+  };
+
   return (
     <div className="user-form-container">
       <h2 className="form-heading">My Profile</h2>
-      <form className="user-form">
+      <form className="user-form" onSubmit={handleSubmit}>
         <div className="image">
           <img src={defUser} alt="" width="50px" />
           <input
@@ -141,6 +157,8 @@ const UpdateUsers = ({ _id }) => {
         </div>
 
         <button type="submit">Save user</button>
+        <span style={{ color: "green", fontSize: "14px" }}>{success}</span>
+        <span style={{ color: "red", fontSize: "14px" }}>{error}</span>
       </form>
     </div>
   );
