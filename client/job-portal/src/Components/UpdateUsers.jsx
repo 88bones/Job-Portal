@@ -1,23 +1,47 @@
 import React, { useEffect, useState } from "react";
 import defUser from "../Images/account.svg";
 import "../Css/UpdateUsers.css";
+import axios from "axios";
 
-const UpdateUsers = () => {
-  const userData = localStorage.getItem("user");
-  const parsedData = JSON.parse(userData);
+const UpdateUsers = ({ _id }) => {
   const [imgError, setImgError] = useState("");
 
   const [data, setData] = useState({
-    fullname: parsedData?.fullname || "",
-    email: parsedData?.email || "",
+    fullname: "",
+    email: "",
     password: "",
     repassword: "",
-    address: parsedData?.address || "",
-    phone: parsedData?.phone || "",
+    address: "",
+    phone: "",
     resume: "",
     image: "",
-    skill: parsedData?.skill || [],
+    skill: [],
   });
+
+  console.log(_id);
+  useEffect(() => {
+    if (_id) {
+      axios
+        .get(`http://localhost:3001/api/users/getUser/${_id}`)
+        .then((response) => {
+          const user = response.data;
+          setData({
+            fullname: user.fullname || "",
+            email: user.email || "",
+            password: "",
+            repassword: "",
+            address: user.address || "",
+            phone: user.phone || "",
+            resume: "",
+            image: "",
+            skill: user.skill || [],
+          });
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+    }
+  }, [_id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,7 +79,6 @@ const UpdateUsers = () => {
           />
         </div>
         <span style={{ color: "red", fontSize: "14px" }}>{imgError}</span>
-        <br />
 
         <input
           type="text"

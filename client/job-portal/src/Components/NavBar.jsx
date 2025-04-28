@@ -30,7 +30,7 @@ const NavBar = ({
     localStorage.removeItem("role");
     localStorage.removeItem("user");
     setIsLoggedIn(false);
-    navigate("/");
+    // navigate("/");
   };
 
   useEffect(() => {

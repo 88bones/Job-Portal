@@ -4,13 +4,13 @@ import SideBar from "../Components/SideBar";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const Admin = ({ loggedIn }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!loggedIn) {
-      navigate("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!loggedIn) {
+  //     navigate("/");
+  //   }
+  // }, []);
 
   return (
     <>

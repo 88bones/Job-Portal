@@ -22,6 +22,7 @@ function App() {
   );
   const [role, setRole] = useState(localStorage.getItem("role") || "");
   const [loggedIn, setIsLoggedIn] = useState(false);
+  const [_id, setId] = useState(localStorage.getItem("_id") || "");
 
   return (
     <Router>
@@ -88,7 +89,7 @@ function App() {
             path="createjobs"
             element={<CreateJobs fullname={fullname} />}
           />
-          <Route path="updateUsers" element={<UpdateUsers />} />
+          <Route path="updateUsers" element={<UpdateUsers _id={_id} />} />
         </Route>
       </Routes>
     </Router>

@@ -6,11 +6,11 @@ import { Outlet, useNavigate } from "react-router-dom";
 const Dashboard = ({ fullname, loggedIn }) => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!loggedIn) {
-      navigate("/");
-    }
-  }, [loggedIn, navigate]);
+  // useEffect(() => {
+  //   if (!loggedIn) {
+  //     navigate("/");
+  //   }
+  // }, [loggedIn, navigate]);
 
   return (
     <>
