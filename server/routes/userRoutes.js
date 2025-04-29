@@ -1,6 +1,7 @@
 const express = require("express");
 const UserModel = require("../models/userModel");
 const jwtGenerator = require("../utils/jwtGenerator");
+const { updateUser } = require("../controllers/updateController");
 
 const router = express.Router();
 
@@ -36,18 +37,20 @@ router.get("/getUser/:id", async (req, res) => {
   }
 });
 
-router.put("/updateUser/:id", async (req, res) => {
-  try {
-    const userId = req.params.id;
-    const updatedData = req.body;
+router.put("/updateUser/:id", updateUser);
 
-    const updatedUser = await UserModel.findByIdAndUpdate(userId, updatedData, {
-      new: true,
-    });
-    res.json(updatedUser);
-  } catch (err) {
-    res.json(err);
-  }
-});
+// router.put("/updateUser/:id", async (req, res) => {
+//   try {
+//     const userId = req.params.id;
+//     const updatedData = req.body;
+
+//     const updatedUser = await UserModel.findByIdAndUpdate(userId, updatedData, {
+//       new: true,
+//     });
+//     res.json(updatedUser);
+//   } catch (err) {
+//     res.json(err);
+//   }
+// });
 
 module.exports = router;

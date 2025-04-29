@@ -3,7 +3,7 @@ import defUser from "../Images/account.svg";
 import "../Css/UpdateUsers.css";
 import axios from "axios";
 
-const UpdateUsers = ({ _id }) => {
+const UpdateUsers = ({ _id, role }) => {
   const [imgError, setImgError] = useState("");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");

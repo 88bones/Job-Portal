@@ -91,7 +91,10 @@ function App() {
             path="createjobs"
             element={<CreateJobs fullname={fullname} />}
           />
-          <Route path="updateUsers" element={<UpdateUsers _id={_id} />} />
+          <Route
+            path="updateUsers"
+            element={<UpdateUsers _id={_id} role={role} />}
+          />
         </Route>
       </Routes>
     </Router>
