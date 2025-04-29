@@ -37,7 +37,7 @@ router.get("/getUser/:id", async (req, res) => {
   }
 });
 
-router.put("/updateUser/:id", updateUser);
+router.put("/updateUser/:id/:role", updateUser);
 
 // router.put("/updateUser/:id", async (req, res) => {
 //   try {
