@@ -13,7 +13,7 @@ const updateUser = async (req, res) => {
       result = await UserModel.findByIdAndUpdate(id, updatedData, {
         new: true,
       });
-    } else if (role === "admin") {
+    } else if (role === "recruiter") {
       result = await RecruiterModel.findByIdAndUpdate(id, updatedData, {
         new: true,
       });

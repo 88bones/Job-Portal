@@ -21,11 +21,12 @@ const UpdateUsers = ({ _id, role }) => {
   });
 
   useEffect(() => {
-    if (_id) {
+    if (_id && role === "user") {
       axios
-        .get(`http://localhost:3001/api/users/getUser/${_id}`)
+        .get(`http://localhost:3001/api/users/getUser/${_id}/${role}`)
         .then((response) => {
           const user = response.data;
+          console.log(user);
           setData({
             fullname: user.fullname || "",
             email: user.email || "",
@@ -40,7 +41,7 @@ const UpdateUsers = ({ _id, role }) => {
           console.log("error", err);
         });
     }
-  }, [_id]);
+  }, [_id, role]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

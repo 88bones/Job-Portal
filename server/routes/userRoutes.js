@@ -2,6 +2,7 @@ const express = require("express");
 const UserModel = require("../models/userModel");
 const jwtGenerator = require("../utils/jwtGenerator");
 const { updateUser } = require("../controllers/updateController");
+const { getData } = require("../controllers/getDataController");
 
 const router = express.Router();
 
@@ -22,35 +23,8 @@ router.get("/getUsers", async (req, res) => {
   }
 });
 
-router.get("/getUser/:id", async (req, res) => {
-  try {
-    const userId = req.params.id;
-    const result = await UserModel.findById(userId);
-
-    if (!result) {
-      return res.status(404).json({ message: "user not found" });
-    }
-
-    res.json(result);
-  } catch (err) {
-    res.json(err);
-  }
-});
+router.get("/getUser/:id/:role", getData);
 
 router.put("/updateUser/:id/:role", updateUser);
-
-// router.put("/updateUser/:id", async (req, res) => {
-//   try {
-//     const userId = req.params.id;
-//     const updatedData = req.body;
-
-//     const updatedUser = await UserModel.findByIdAndUpdate(userId, updatedData, {
-//       new: true,
-//     });
-//     res.json(updatedUser);
-//   } catch (err) {
-//     res.json(err);
-//   }
-// });
 
 module.exports = router;
