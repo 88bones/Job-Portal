@@ -40,6 +40,16 @@ const UpdateUsers = ({ _id, role }) => {
         .catch((err) => {
           console.log("error", err);
         });
+    } else if (_id && role === "recruiter") {
+      axios
+        .get(`http://localhost:3001/api/users/getUser/${_id}/${role}`)
+        .then((response) => {
+          const recruiter = response.data;
+          console.log(recruiter);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, [_id, role]);
 
@@ -82,35 +92,36 @@ const UpdateUsers = ({ _id, role }) => {
   return (
     <div className="user-form-container">
       <h2 className="form-heading">My Profile</h2>
-      <form className="user-form" onSubmit={handleSubmit}>
-        <div className="image">
-          <img src={defUser} alt="" width="50px" />
+      {role === "user" && (
+        <form className="user-form" onSubmit={handleSubmit}>
+          <div className="image">
+            <img src={defUser} alt="" width="50px" />
+            <input
+              type="file"
+              name="image"
+              //onChange={(e) => setData({ ...data, image: e.target.files[0] })}
+              onChange={handleImageChange}
+            />
+          </div>
+          <span style={{ color: "red", fontSize: "14px" }}>{imgError}</span>
+
           <input
-            type="file"
-            name="image"
-            //onChange={(e) => setData({ ...data, image: e.target.files[0] })}
-            onChange={handleImageChange}
+            type="text"
+            name="fullname"
+            placeholder="Full Name"
+            value={data.fullname}
+            onChange={handleChange}
           />
-        </div>
-        <span style={{ color: "red", fontSize: "14px" }}>{imgError}</span>
 
-        <input
-          type="text"
-          name="fullname"
-          placeholder="Full Name"
-          value={data.fullname}
-          onChange={handleChange}
-        />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={data.email}
+            onChange={handleChange}
+          />
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={data.email}
-          onChange={handleChange}
-        />
-
-        {/* <input
+          {/* <input
           type="text"
           name="password"
           placeholder="Password"
@@ -118,49 +129,50 @@ const UpdateUsers = ({ _id, role }) => {
           onChange={handleChange}
         /> */}
 
-        <input
-          type="text"
-          name="address"
-          placeholder="Address"
-          value={data.address}
-          onChange={handleChange}
-        />
-
-        <input
-          type="text"
-          name="phone"
-          placeholder="Phone"
-          value={data.phone}
-          onChange={handleChange}
-        />
-
-        <input
-          type="text"
-          name="skill"
-          placeholder="Skills (comma separated)"
-          value={Array.isArray(data.skills) ? data.skills.join(", ") : ""}
-          onChange={(e) =>
-            setData({
-              ...data,
-              skills: e.target.value.split(",").map((s) => s.trim()),
-            })
-          }
-        />
-        <br />
-
-        <div className="resume">
-          <label htmlFor="">Resume:</label>
           <input
-            type="file"
-            name="resume"
-            onChange={(e) => setData({ ...data, resume: e.target.files[0] })}
+            type="text"
+            name="address"
+            placeholder="Address"
+            value={data.address}
+            onChange={handleChange}
           />
-        </div>
 
-        <button type="submit">Save user</button>
-        <span style={{ color: "green", fontSize: "14px" }}>{success}</span>
-        <span style={{ color: "red", fontSize: "14px" }}>{error}</span>
-      </form>
+          <input
+            type="text"
+            name="phone"
+            placeholder="Phone"
+            value={data.phone}
+            onChange={handleChange}
+          />
+
+          <input
+            type="text"
+            name="skill"
+            placeholder="Skills (comma separated)"
+            value={Array.isArray(data.skills) ? data.skills.join(", ") : ""}
+            onChange={(e) =>
+              setData({
+                ...data,
+                skills: e.target.value.split(",").map((s) => s.trim()),
+              })
+            }
+          />
+          <br />
+
+          <div className="resume">
+            <label htmlFor="">Resume:</label>
+            <input
+              type="file"
+              name="resume"
+              onChange={(e) => setData({ ...data, resume: e.target.files[0] })}
+            />
+          </div>
+
+          <button type="submit">Save user</button>
+          <span style={{ color: "green", fontSize: "14px" }}>{success}</span>
+          <span style={{ color: "red", fontSize: "14px" }}>{error}</span>
+        </form>
+      )}
     </div>
   );
 };
