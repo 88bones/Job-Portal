@@ -111,7 +111,7 @@ const UpdateUsers = ({ _id, role }) => {
     const payload = role === "user" ? data : dataRec;
 
     axios
-      .put(`http://localhost:3001/api/users/updateUser/${_id}`, payload)
+      .put(`http://localhost:3001/api/users/updateUser/${_id}/${role}`, payload)
       .then((response) => {
         setSuccess("Profile updated!");
       })
