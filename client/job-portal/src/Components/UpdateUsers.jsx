@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import defUser from "../Images/account.svg";
+import defRecruiter from "../Images/recDefault.png";
 import "../Css/UpdateUsers.css";
 import axios from "axios";
 
@@ -19,7 +20,16 @@ const UpdateUsers = ({ _id, role }) => {
     image: "",
     skills: [],
   });
-
+  const [dataRec, setDataRec] = useState({
+    companyname: "",
+    industry: "",
+    email: "",
+    password: "",
+    repassword: "",
+    phone: "",
+    address: "",
+    logo: "",
+  });
   useEffect(() => {
     if (_id && role === "user") {
       axios
@@ -46,6 +56,14 @@ const UpdateUsers = ({ _id, role }) => {
         .then((response) => {
           const recruiter = response.data;
           console.log(recruiter);
+          setDataRec({
+            companyname: recruiter.companyname || "",
+            industry: recruiter.industry || "",
+            email: recruiter.email || "",
+            phone: recruiter.phone || "",
+            address: recruiter.address || "",
+            logo: "",
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -55,10 +73,18 @@ const UpdateUsers = ({ _id, role }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+
+    if (role === "user") {
+      setData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    } else if (role === "recruiter") {
+      setDataRec((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleImageChange = (e) => {
@@ -72,21 +98,26 @@ const UpdateUsers = ({ _id, role }) => {
       return;
     }
     setImgError("");
-    setData({ ...data, image: file });
+    if (role === "user") {
+      setData((prev) => ({ ...prev, image: file }));
+    } else if (role === "recruiter") {
+      setDataRec((prev) => ({ ...prev, logo: file }));
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const payload = role === "user" ? data : dataRec;
+
     axios
-      .put(`http://localhost:3001/api/users/updateUser/${_id}`, data)
+      .put(`http://localhost:3001/api/users/updateUser/${_id}`, payload)
       .then((response) => {
-        const user = response.data;
-        setSuccess("User updated!");
+        setSuccess("Profile updated!");
       })
       .catch((err) => {
-        setError("User NOT updated!");
+        setError("Profile NOT updated!");
       });
-    console.log("Updated :", data);
   };
 
   return (
@@ -120,14 +151,6 @@ const UpdateUsers = ({ _id, role }) => {
             value={data.email}
             onChange={handleChange}
           />
-
-          {/* <input
-          type="text"
-          name="password"
-          placeholder="Password"
-          value={data.password}
-          onChange={handleChange}
-        /> */}
 
           <input
             type="text"
@@ -171,6 +194,79 @@ const UpdateUsers = ({ _id, role }) => {
           <button type="submit">Save user</button>
           <span style={{ color: "green", fontSize: "14px" }}>{success}</span>
           <span style={{ color: "red", fontSize: "14px" }}>{error}</span>
+        </form>
+      )}
+      {/* END OF USER */}
+
+      {/* FOR RECRUITER */}
+      {role === "recruiter" && (
+        <form onSubmit={handleSubmit} className="user-form">
+          <div className="image">
+            <img src={defRecruiter} alt="" width="50px" />
+            <input
+              type="file"
+              name="image"
+              //onChange={(e) => setData({ ...data, image: e.target.files[0] })}
+              onChange={handleImageChange}
+            />
+          </div>
+          <br />
+          <input
+            type="text"
+            name="companyname"
+            placeholder="Company Name"
+            value={dataRec.companyname}
+            onChange={handleChange}
+          />
+          <select
+            name="industry"
+            value={dataRec.industry}
+            onChange={handleChange}
+            required
+          >
+            <option disabled value="">
+              Industry
+            </option>
+            <option value="it">Information Technology</option>
+            <option value="mgm">Management</option>
+            <option value="er">Engineering</option>
+            <option value="med">Medical</option>
+          </select>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={dataRec.email}
+            onChange={handleChange}
+          />
+
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone"
+            value={dataRec.phone}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="text"
+            name="address"
+            placeholder="Address"
+            value={dataRec.address}
+            onChange={handleChange}
+            required
+          />
+
+          <button className="register-btn" type="submit">
+            Save Recruiter
+          </button>
+          {success && (
+            <span className="success-span" style={{ color: "green" }}>
+              {success}
+            </span>
+          )}
+          {error && <span style={{ color: "red" }}>{error}</span>}
         </form>
       )}
     </div>
