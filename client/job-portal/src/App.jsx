@@ -85,7 +85,14 @@ function App() {
         {/* dashboard users */}
         <Route
           path="/dashboard"
-          element={<Dashboard fullname={fullname} loggedIn={loggedIn} />}
+          element={
+            <Dashboard
+              fullname={fullname}
+              loggedIn={loggedIn}
+              role={role}
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          }
         >
           <Route
             path="createjobs"

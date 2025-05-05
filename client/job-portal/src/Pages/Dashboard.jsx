@@ -3,7 +3,7 @@ import "../Css/Admin.css";
 import UserSideBar from "../Components/UserSideBar";
 import { Outlet, useNavigate } from "react-router-dom";
 
-const Dashboard = ({ fullname, loggedIn }) => {
+const Dashboard = ({ fullname, loggedIn, role, setIsLoggedIn }) => {
   // const navigate = useNavigate();
 
   // useEffect(() => {
@@ -12,10 +12,14 @@ const Dashboard = ({ fullname, loggedIn }) => {
   //   }
   // }, [loggedIn, navigate]);
 
+  useEffect(() => {
+    setIsLoggedIn(true);
+  });
+
   return (
     <>
       <div className="dashboard-container">
-        <UserSideBar fullname={fullname} />
+        <UserSideBar fullname={fullname} role={role} loggedIn={loggedIn} />
         <div className="dashboard-content">
           <Outlet />
         </div>

@@ -33,22 +33,23 @@ const Login = ({ setFullname, setRole, setIsLoggedIn }) => {
           setRole(user.role);
           setIsLoggedIn(true);
           navigate("/");
-        } else {
-          console.log("jumps to else");
-          setError("Credentials Invalid!!");
         }
       })
       .catch((err) => {
-        setError("error: err");
+        setError("Credentials Invalid!!");
         console.log(err);
       });
+  };
+
+  const handleChange = (e) => {
+    setError("");
   };
 
   return (
     <div className="form-container">
       <div className="form-sub">
         <h2>Login.</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onChange={handleChange}>
           <input
             type="email"
             name="email"
@@ -68,7 +69,14 @@ const Login = ({ setFullname, setRole, setIsLoggedIn }) => {
             Login
           </button>
         </form>
-        {error && <span className="login-error">{error}</span>}
+        {error && (
+          <span
+            className="login-error"
+            style={{ color: "red", fontWeight: "600", textAlign: "center" }}
+          >
+            {error}
+          </span>
+        )}
         <div className="login">
           <p>
             Don't have an account? <NavLink to={"/register"}>Regsiter!</NavLink>

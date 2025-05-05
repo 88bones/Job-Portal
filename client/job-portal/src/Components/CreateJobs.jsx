@@ -85,8 +85,7 @@ const CreateJobs = ({ fullname }) => {
     <div className="job-create-container">
       <header className="job-header">
         <h2>Create job postings.</h2>
-        <p>{fullname}</p>
-        <p>{userId}</p>
+        <h4>{fullname}</h4>
       </header>
 
       <form onSubmit={handleSubmit}>
@@ -138,9 +137,7 @@ const CreateJobs = ({ fullname }) => {
             onChange={handleChange}
             required
           >
-            <option disabled defaultValue>
-              Industry
-            </option>
+            <option defaultValue>Industry</option>
             {industries.map((industry, index) => (
               <option key={index} value={industry.value}>
                 {industry.name}

@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../Css/SideBar.css";
 
-const UserSideBar = ({ fullname }) => {
-  const barItems = [
-    { name: "Profile", path: "/dashboard/updateUsers" },
-    { name: "Applied Jobs", path: "" },
-    { name: "Applications", path: "" },
-    { name: "Create Jobs", path: "/dashboard/createjobs" },
-  ];
+const UserSideBar = ({ fullname, loggedIn, role }) => {
+  const barItems = [];
+
+  loggedIn &&
+    barItems.push({ name: "Profile", path: "/dashboard/updateUsers" });
+
+  if (loggedIn && role === "recruiter") {
+    barItems.push(
+      { name: "Create Jobs", path: "/dashboard/createJobs" },
+      { name: "Created Jobs", path: "" },
+      { name: "Applications", path: "" }
+    );
+  } else if (loggedIn && role === "user") {
+    barItems.push({ name: "Applied Jobs", path: "" });
+  }
+
   return (
     <div className="side-bar-container">
       {/* <h1>アドミニストレータ</h1> */}
