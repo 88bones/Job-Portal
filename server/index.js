@@ -20,7 +20,6 @@ app.use("/api/users", userRoutes);
 app.use("/api/recruiters", recruiterRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/jobs", jobRoutes);
-//app.use("/uploads", express.static(path.join(__dirname, "Uploads")));
 
 app.listen(3001, () => {
   console.log("app is running ");
