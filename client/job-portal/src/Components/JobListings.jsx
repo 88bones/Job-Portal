@@ -53,6 +53,7 @@ const JobListings = () => {
               <span className="tag">{job.address}</span>
             </div>
             <div className="footer">
+              <p className="company-info">{job.salary}</p>
               <button className="apply-button">
                 <NavLink>Apply now</NavLink>
               </button>

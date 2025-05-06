@@ -46,12 +46,12 @@ const CreateJobs = ({ fullname }) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   };
-  // console.log(data);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:3001/api/jobs/createJob", {
       title: data.title,
+      salary: data.salary,
       description: data.description,
       openings: data.openings,
       experience: data.experience,
@@ -66,6 +66,7 @@ const CreateJobs = ({ fullname }) => {
         setData({
           title: "",
           description: "",
+          salary: "",
           openings: "",
           experience: "",
           address: "",
@@ -125,6 +126,18 @@ const CreateJobs = ({ fullname }) => {
             maxLength={500}
             minLength={10}
             required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="salary">Salary</label>
+          <input
+            type="text"
+            name="salary"
+            id="salary"
+            value={data.salary}
+            onChange={handleChange}
+            placeholder="Negotiable or Amount"
           />
         </div>
 

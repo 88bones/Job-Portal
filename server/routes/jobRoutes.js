@@ -1,5 +1,6 @@
 const express = require("express");
 const JobModel = require("../models/jobModel");
+const { getJob } = require("../controllers/getJobController");
 
 const router = express.Router();
 
@@ -18,5 +19,7 @@ router.get("/getJobs", async (req, res) => {
     res.json(err);
   }
 });
+
+router.get("/getJob/:id", getJob);
 
 module.exports = router;

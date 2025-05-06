@@ -5,6 +5,11 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  salary: {
+    type: String,
+    required: true,
+    default: "negotiable",
+  },
   description: {
     type: String,
     required: true,
