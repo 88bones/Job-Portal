@@ -1,0 +1,23 @@
+.created-jobs-view table{
+        width: 100%;
+    border-collapse: collapse;
+}
+
+.created-jobs-view thead{
+    font-size:1.2rem;
+}
+
+.created-jobs-view th{
+        background:var(--sub-back );
+    padding: 8px 0px;
+}
+
+.created-jobs-view tr:nth-child(odd){
+    background-color: var(--sub-background);
+}
+
+.created-jobs-view td{
+        padding: 6px 0px;
+    text-align: center;
+    font-weight:500 ;
+}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchJob } from "../services/getJobService";
+import "../Css/CreatedJobs.css";
 
 const CreatedJobs = ({ _id, fullname }) => {
   const [jobData, setJobData] = useState([]);
@@ -8,7 +9,6 @@ const CreatedJobs = ({ _id, fullname }) => {
     fetchJob(_id)
       .then((jobs) => {
         console.log(jobs);
-        // Ensure it's always an array
         setJobData(Array.isArray(jobs) ? jobs : [jobs]);
       })
       .catch((err) => {
@@ -22,12 +22,12 @@ const CreatedJobs = ({ _id, fullname }) => {
         <header>
           <h2>{fullname}'s Job Listings</h2>
         </header>
-        <table border="1" cellPadding="8" cellSpacing="0">
+        <table>
           <thead>
             <tr>
               <th>Title</th>
               <th>Salary</th>
-              <th>Description</th>
+              {/* <th>Description</th> */}
               <th>Openings</th>
               <th>Experience</th>
               <th>Address</th>
@@ -41,7 +41,7 @@ const CreatedJobs = ({ _id, fullname }) => {
               <tr key={index}>
                 <td>{job.title}</td>
                 <td>{job.salary}</td>
-                <td>{job.description}</td>
+                {/* <td>{job.description}</td> */}
                 <td>{job.openings}</td>
                 <td>{job.experience}</td>
                 <td>{job.address}</td>

@@ -12,6 +12,7 @@
     --font-heading:"Figtree", sans-serif;
 }
 
+
 body{
     background: var(--background); 
     font-family: var(--font-text);
