@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Quicksand:wght@300..700&display=swap');
 /* @import "tailwindcss"; */
-:root{
+/* :root{
     --background:rgb(255, 255, 255);
     --sub-background:#D5DEEF;
     --text:#628ECB;
@@ -10,7 +10,28 @@
     --sub-back:#B1C9EF;
     --font-text:"Quicksand", sans-serif; 
     --font-heading:"Figtree", sans-serif;
+} */
+:root {
+    /* ===== Base Palette (indigo-centric) ===== */
+    --background:       #F9FAFB;   /* overall page background */
+    --sub-background:   #D5DEEF;   /* cards, nav bar, hero overlay, etc. */
+    --sub-back:         #E5E7EB;   /* subtle borders / input outlines */
+
+    /* ===== Brand & Action Colors ===== */
+    --button:           #4F46E5;   /* primary indigo (buttons, links) */
+    --hover:            #3730A3;   /* darker indigo for hover / active */
+
+    /* ===== Typography ===== */
+    /* --heading:          #111827;   */
+    --heading:          #4F46E5;
+    --text:             #1a174d;   /* muted gray-blue for body copy */
+
+    /* ===== Fonts (keep your choices) ===== */
+    --font-text:        "Quicksand", sans-serif;
+    --font-heading:     "Figtree",   sans-serif;
 }
+
+
 
 
 body{

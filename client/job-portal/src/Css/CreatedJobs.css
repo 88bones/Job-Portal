@@ -1,5 +1,5 @@
 .created-jobs-view table{
-        width: 100%;
+    width: 100%;
     border-collapse: collapse;
 }
 
@@ -8,7 +8,7 @@
 }
 
 .created-jobs-view th{
-        background:var(--sub-back );
+    background:var(--sub-back );
     padding: 8px 0px;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .created-jobs-view td{
-        padding: 6px 0px;
+    padding: 6px 0px;
     text-align: center;
     font-weight:500 ;
 }
