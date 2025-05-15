@@ -19,7 +19,10 @@ const Banner = ({ isOver }) => {
         </div>
         <div className="banner-container">
           <div className="banner-sub">
-            <h1>Discover Jobs That Fit Your Skills & Passion.</h1>
+            <h1>
+              Discover <span class="highlight-job">Jobs</span> That Fit Your
+              Skills & Passion.
+            </h1>
             <p>Browse thousands of job listings from top companies.</p>
             <div className="job-params">
               <input type="text" placeholder="Job Title..." />

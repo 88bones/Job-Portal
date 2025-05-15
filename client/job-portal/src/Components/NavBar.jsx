@@ -81,7 +81,12 @@ const NavBar = ({
                 <button className="login-btn">
                   <NavLink to={"/login"}> Login</NavLink>
                 </button>
-                <button onClick={() => setIsOver(!isOver)}>Register</button>
+                <button
+                  onClick={() => setIsOver(!isOver)}
+                  style={{ background: "var(--button)" }}
+                >
+                  Register
+                </button>
               </>
             )}
           </div>

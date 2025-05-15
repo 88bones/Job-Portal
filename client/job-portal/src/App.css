@@ -25,7 +25,7 @@
     /* --heading:          #111827;   */
     --heading:          #4F46E5;
     --text:             #1a174d;   /* muted gray-blue for body copy */
-
+    --highlights:       #1e13e2;
     /* ===== Fonts (keep your choices) ===== */
     --font-text:        "Quicksand", sans-serif;
     --font-heading:     "Figtree",   sans-serif;
