@@ -15,6 +15,7 @@ import Dashboard from "./Pages/Dashboard";
 import CreateJobs from "./Components/CreateJobs";
 import UpdateUsers from "./Components/UpdateUsers";
 import CreatedJobs from "./Components/CreatedJobs";
+import ApplyJob from "./Components/ApplyJob";
 
 function App() {
   const [isOver, setIsOver] = useState(false);
@@ -61,7 +62,9 @@ function App() {
         />
         <Route path="/aboutus" element={<AboutUs />} />
 
-        {/* registers/logins */}
+        <Route path="/applyJob/:jobId" element={<ApplyJob />} />
+
+        {/*============== registers/logins =================*/}
         <Route path="/register" element={<Register />} />
         <Route path="/recruiter" element={<Recruiter />} />
         <Route
@@ -77,13 +80,13 @@ function App() {
             />
           }
         />
-        {/* admin */}
+        {/*================ admin==========*/}
         <Route path="/admin" element={<Admin loggedIn={loggedIn} />}>
           <Route path="users" element={<Users />} />
           <Route path="companies" element={<Companies />} />
         </Route>
 
-        {/* dashboard users */}
+        {/* =========dashboard users=========== */}
         <Route
           path="/dashboard"
           element={
@@ -95,7 +98,7 @@ function App() {
             />
           }
         >
-          {/* jobs */}
+          {/* =============jobs ================*/}
           <Route
             path="createjobs"
             element={<CreateJobs fullname={fullname} />}
@@ -104,7 +107,7 @@ function App() {
             path="createdJobs"
             element={<CreatedJobs _id={_id} fullname={fullname} />}
           />
-          {/* users */}
+          {/* ===========users============== */}
           <Route
             path="updateUsers"
             element={<UpdateUsers _id={_id} role={role} />}
