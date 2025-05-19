@@ -22,6 +22,6 @@ router.get("/getJobs", async (req, res) => {
 });
 
 router.get("/getJob/:id", getJob);
-router.get("/getJobApply/:jobID", getJobApply);
+router.get("/getJobApply/:_id", getJobApply);
 
 module.exports = router;
