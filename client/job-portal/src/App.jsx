@@ -64,7 +64,7 @@ function App() {
 
         {/* =============Apply JObs=============== */}
         <Route
-          path="/applyJob/:jobId"
+          path="/applyJob/:_id"
           element={
             <ApplyJob
               isOver={isOver}
