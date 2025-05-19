@@ -8,7 +8,7 @@ const CreatedJobs = ({ _id, fullname }) => {
   useEffect(() => {
     fetchJob(_id)
       .then((jobs) => {
-        console.log(jobs);
+        // console.log(jobs);
         setJobData(Array.isArray(jobs) ? jobs : [jobs]);
       })
       .catch((err) => {

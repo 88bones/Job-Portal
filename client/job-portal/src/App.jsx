@@ -15,7 +15,7 @@ import Dashboard from "./Pages/Dashboard";
 import CreateJobs from "./Components/CreateJobs";
 import UpdateUsers from "./Components/UpdateUsers";
 import CreatedJobs from "./Components/CreatedJobs";
-import ApplyJob from "./Components/ApplyJob";
+import ApplyJob from "./Pages/ApplyJob";
 
 function App() {
   const [isOver, setIsOver] = useState(false);
@@ -62,7 +62,22 @@ function App() {
         />
         <Route path="/aboutus" element={<AboutUs />} />
 
-        <Route path="/applyJob/:jobId" element={<ApplyJob />} />
+        {/* =============Apply JObs=============== */}
+        <Route
+          path="/applyJob/:jobId"
+          element={
+            <ApplyJob
+              isOver={isOver}
+              setIsOver={setIsOver}
+              fullname={fullname}
+              setFullname={setFullname}
+              setRole={setRole}
+              role={role}
+              loggedIn={loggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+            />
+          }
+        />
 
         {/*============== registers/logins =================*/}
         <Route path="/register" element={<Register />} />

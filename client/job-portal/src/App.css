@@ -1,16 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Quicksand:wght@300..700&display=swap');
-/* @import "tailwindcss"; */
-/* :root{
-    --background:rgb(255, 255, 255);
-    --sub-background:#D5DEEF;
-    --text:#628ECB;
-    --heading:#395886;
-    --button:#395886;
-    --hover:#8AAEE0;
-    --sub-back:#B1C9EF;
-    --font-text:"Quicksand", sans-serif; 
-    --font-heading:"Figtree", sans-serif;
-} */
+@import "tailwindcss";
 :root {
     /* ===== Base Palette (indigo-centric) ===== */
     --background:       #F9FAFB;   /* overall page background */
