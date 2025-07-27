@@ -3,7 +3,10 @@ const JobModel = require("../models/jobModel");
 const getJobApply = async (req, res) => {
   try {
     const _id = req.params;
-    const result = await JobModel.findOne(_id);
+    const result = await JobModel.findOne({ _id: _id }).populate(
+      "postedBy",
+      "companyname"
+    );
     if (!result) {
       return res.status(404).json({ message: "Job not found" });
     }

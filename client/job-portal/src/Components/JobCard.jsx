@@ -10,18 +10,29 @@ const JobCard = () => {
   useEffect(() => {
     fetchJobDetails(_id)
       .then((job) => {
-        setJobData([job]);
+        setJobData(job);
         console.log(job);
       })
       .catch((err) => {
-        setError("Error fetching Job. :(", err);
+        setError("Error fetching Job. :", err);
       });
   }, [_id]);
   return (
-    <div>
-      <h1>Job card details</h1>
-      <h2>{_id}</h2>
-    </div>
+    <>
+      <div className="job-card-container">
+        <header className="job-card-header">
+          <h1>Job card details</h1>
+        </header>
+        <div className="job-card-holder">
+          <div className="job-card-box">
+            <p>{jobData.postedBy?.companyname}</p>
+            <p>{jobData.title}</p>
+            <p>{jobData.address}</p>
+            <p>{jobData.description}</p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

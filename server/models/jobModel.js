@@ -35,6 +35,7 @@ const jobSchema = new mongoose.Schema({
   postedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "recruiter",
+    companyname: String,
     required: true,
   },
   createdAt: {
