@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../Css/SideBar.css";
+import { useSelector } from "react-redux";
 
-const UserSideBar = ({ fullname, loggedIn, role }) => {
+const UserSideBar = () => {
+  const { fullname, loggedIn, role } = useSelector((state) => state.user);
+
   const barItems = [];
 
   loggedIn &&

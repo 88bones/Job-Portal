@@ -2,8 +2,11 @@ import React, { useEffect } from "react";
 import "../Css/Admin.css";
 import UserSideBar from "../Components/UserSideBar";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Dashboard = ({ fullname, loggedIn, role, setIsLoggedIn }) => {
+const Dashboard = () => {
+  const { fullname, loggedIn, role } = useSelector((state) => state.user);
+
   // const navigate = useNavigate();
 
   // useEffect(() => {
@@ -12,9 +15,9 @@ const Dashboard = ({ fullname, loggedIn, role, setIsLoggedIn }) => {
   //   }
   // }, [loggedIn, navigate]);
 
-  useEffect(() => {
-    setIsLoggedIn(true);
-  });
+  // useEffect(() => {
+  //   setIsLoggedIn(true);
+  // });
 
   return (
     <>
