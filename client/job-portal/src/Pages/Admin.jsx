@@ -2,15 +2,10 @@ import React, { useEffect } from "react";
 import "../Css/Admin.css";
 import SideBar from "../Components/SideBar";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Admin = ({ loggedIn }) => {
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (!loggedIn) {
-  //     navigate("/");
-  //   }
-  // }, []);
+const Admin = () => {
+  const { loggedIn } = useSelector((state) => state.user);
 
   return (
     <>

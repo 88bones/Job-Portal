@@ -5,13 +5,13 @@ const applicationSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
     fullname: String,
-    required: true,
+    requird: true,
   },
   job: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "job",
     title: String,
-    required: true,
+    requird: true,
   },
   appliedAt: {
     type: Date,

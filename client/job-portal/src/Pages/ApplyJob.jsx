@@ -25,7 +25,7 @@ const ApplyJob = ({
         setIsLoggedIn={setIsLoggedIn}
       />
       <div className="job-display-container">
-        <JobCard _id={_id} loggedIn={loggedIn} />
+        <JobCard />
       </div>
     </div>
   );

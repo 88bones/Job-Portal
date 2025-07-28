@@ -28,16 +28,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={
-            <Home
-              isOver={isOver}
-              setIsOver={setIsOver}
-              fullname={fullname}
-              role={role}
-              loggedIn={loggedIn}
-              _id={_id}
-            />
-          }
+          element={<Home isOver={isOver} setIsOver={setIsOver} />}
         />
         <Route
           path="/jobs"
@@ -98,5 +89,5 @@ function App() {
     </Router>
   );
 }
-
+ 
 export default App;

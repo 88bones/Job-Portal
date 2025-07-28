@@ -2,6 +2,7 @@ const express = require("express");
 const JobModel = require("../models/jobModel");
 const { getJob } = require("../controllers/getJobController");
 const { getJobApply } = require("../controllers/getJobApply");
+const { jobApply } = require("../controllers/postApplyController");
 
 const router = express.Router();
 
@@ -23,5 +24,6 @@ router.get("/getJobs", async (req, res) => {
 
 router.get("/getJob/:id", getJob);
 router.get("/getJobApply/:_id", getJobApply);
+router.post("/apply/:jobId", jobApply);
 
 module.exports = router;

@@ -7,18 +7,6 @@ import { useSelector } from "react-redux";
 const Dashboard = () => {
   const { fullname, loggedIn, role } = useSelector((state) => state.user);
 
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (!loggedIn) {
-  //     navigate("/");
-  //   }
-  // }, [loggedIn, navigate]);
-
-  // useEffect(() => {
-  //   setIsLoggedIn(true);
-  // });
-
   return (
     <>
       <div className="dashboard-container">
