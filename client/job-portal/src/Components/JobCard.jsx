@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchJobDetails } from "../services/getJobDetails";
 
-const JobCard = () => {
+const JobCard = ({}) => {
   const { _id } = useParams();
   const [jobData, setJobData] = useState([]);
   const [error, setError] = useState();
@@ -11,7 +11,7 @@ const JobCard = () => {
     fetchJobDetails(_id)
       .then((job) => {
         setJobData(job);
-        console.log(job);
+        console.log(_id);
       })
       .catch((err) => {
         setError("Error fetching Job. :", err);
@@ -29,6 +29,7 @@ const JobCard = () => {
             <p>{jobData.title}</p>
             <p>{jobData.address}</p>
             <p>{jobData.description}</p>
+            <button>Apply</button>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import NavBar from "../Components/NavBar";
 import JobCard from "../Components/JobCard";
 
 const ApplyJob = ({
+  _id,
   isOver,
   setIsOver,
   fullname,
@@ -24,7 +25,7 @@ const ApplyJob = ({
         setIsLoggedIn={setIsLoggedIn}
       />
       <div className="job-display-container">
-        <JobCard />
+        <JobCard _id={_id} loggedIn={loggedIn} />
       </div>
     </div>
   );

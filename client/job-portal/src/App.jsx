@@ -67,6 +67,7 @@ function App() {
           path="/applyJob/:_id"
           element={
             <ApplyJob
+              _id={_id}
               isOver={isOver}
               setIsOver={setIsOver}
               fullname={fullname}
