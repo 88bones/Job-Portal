@@ -5,6 +5,7 @@ const userRoutes = require("./routes/userRoutes");
 const recruiterRoutes = require("./routes/recruiterRoutes");
 const loginRoutes = require("./routes/loginRoutes");
 const jobRoutes = require("./routes/jobRoutes");
+const applicationRoutes = require("./routes/applicationRoutes");
 //const path = require("path");
 
 const app = express();
@@ -20,6 +21,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/recruiters", recruiterRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/jobs", jobRoutes);
+app.use("/api/applications", applicationRoutes);
 
 app.listen(3001, () => {
   console.log("app is running ");
