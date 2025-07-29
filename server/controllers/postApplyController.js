@@ -5,6 +5,10 @@ const jobApply = async (req, res) => {
     const { userId } = req.body;
     const jobId = req.params.jobId;
 
+    if (!userId || !jobId) {
+      res.status(400).json({ message: "UserId and JobId are required." });
+    }
+
     const alreadyApplied = await applicationModel.findOne({
       userId,
       jobId,
