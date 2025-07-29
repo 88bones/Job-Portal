@@ -1,17 +1,15 @@
 const mongoose = require("mongoose");
 
 const applicationSchema = new mongoose.Schema({
-  user: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
-    fullname: String,
-    requird: true,
+    required: true,
   },
-  job: {
+  jobId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "job",
-    title: String,
-    requird: true,
+    ref: "jobs",
+    required: true,
   },
   appliedAt: {
     type: Date,

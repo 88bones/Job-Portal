@@ -2,7 +2,8 @@ const applicationModel = require("../models/applicationModel");
 
 const jobApply = async (req, res) => {
   try {
-    const { userId, jobId } = req.body;
+    const { userId } = req.body;
+    const jobId = req.params.jobId;
 
     const alreadyApplied = await applicationModel.findOne({
       userId,
