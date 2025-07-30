@@ -1,0 +1,26 @@
+.jobs-table table{
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.jobs-table thead{
+    font-size:1.2rem;
+}
+
+.jobs-table th{
+    background:var(--sub-back );
+    padding: 8px 0px;
+}
+
+
+.jobs-table tr:nth-child(odd){
+    background-color: var(--sub-background);
+}
+
+
+.jobs-table td{
+    padding: 6px 0px;
+    text-align: center;
+    font-weight:500 ;
+}
