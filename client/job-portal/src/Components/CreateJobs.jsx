@@ -38,6 +38,7 @@ const CreateJobs = ({ fullname }) => {
     address: "",
     level: "",
     emptype: "",
+    skills: [],
     postedBy: userId,
     expiryDate: "",
   });
@@ -57,6 +58,7 @@ const CreateJobs = ({ fullname }) => {
       experience: data.experience,
       address: data.address,
       level: data.level,
+      skills: data.skills,
       emptype: data.emptype,
       postedBy: userId,
       expiryDate: data.expiryDate,
@@ -222,6 +224,22 @@ const CreateJobs = ({ fullname }) => {
               </option>
             ))}
           </select>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="skills">Skills required:</label>
+          <input
+            type="text"
+            name="skills"
+            placeholder="Skills (comma separated)"
+            value={Array.isArray(data.skills) ? data.skills.join(", ") : ""}
+            onChange={(e) => {
+              setData({
+                ...data,
+                skills: e.target.value.split(",").map((s) => s.trim()),
+              });
+            }}
+          />
         </div>
 
         <div className="form-group">
