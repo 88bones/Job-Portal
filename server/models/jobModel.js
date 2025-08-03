@@ -45,6 +45,10 @@ const jobSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  skills: {
+    type: [String],
+    default: [],
+  },
 });
 
 const JobModel = mongoose.model("job", jobSchema);
