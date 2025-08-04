@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
+
 import "../Css/JobListings.css";
 import recDefault from "../Images/recDefault.png";
+import { fetchJobListings } from "../services/getJobListings";
 
 const JobListings = () => {
   const [listOfJobs, setListOfJobs] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/api/jobs/getJobs")
-      .then((response) => {
-        setListOfJobs(response.data);
+    fetchJobListings()
+      .then((data) => {
+        setListOfJobs(data);
       })
       .catch((error) => console.log("Error fetching jobs: ", error));
   }, []);
