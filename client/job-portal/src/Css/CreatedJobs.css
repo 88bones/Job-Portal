@@ -21,3 +21,11 @@
     text-align: center;
     font-weight:500 ;
 }
+
+.created-jobs-view td button{
+    padding: 2px 8px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--button);
+    color: white;
+}

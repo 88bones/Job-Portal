@@ -1,0 +1,88 @@
+.job-card-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 32px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  font-family: var(--font-text);
+  border: 1px solid var(--sub-back);
+}
+
+.job-card-header {
+  border-bottom: 1px solid var(--sub-back);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.job-card-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--heading);
+  font-family: var(--font-heading);
+}
+
+.job-card-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.job-card-box p {
+  font-size: 16px;
+  color: var(--text);
+  margin: 0;
+}
+
+.job-card-box p.company {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--highlights);
+}
+
+.job-card-box p.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--heading);
+  font-family: var(--font-heading);
+}
+
+.job-card-box p.address {
+  font-size: 16px;
+  color: #555;
+}
+
+.job-card-box p.description {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.job-card-box button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: var(--button);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 24px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  align-self: flex-start;
+}
+
+.job-card-box button:hover {
+  background-color: var(--hover);
+  box-shadow: 0 2px 8px rgba(55, 48, 163, 0.2);
+  cursor: pointer;
+}
+
+.error-message {
+  background-color: #ffe9e9;
+  border-left: 4px solid red;
+  color: #b30000;
+  padding: 12px 18px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  font-size: 15px;
+}

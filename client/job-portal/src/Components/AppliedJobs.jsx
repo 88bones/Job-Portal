@@ -52,7 +52,7 @@ const AppliedJobs = () => {
                 <td>{application.jobId?.address}</td>
                 <td>{application.jobId?.postedBy?.email}</td>
                 <td>
-                  {new Date(application.appliedAt).toISOString().split("T")[0]}
+                  {new Date(application?.appliedAt).toISOString().split("T")[0]}
                 </td>
               </tr>
             ))}

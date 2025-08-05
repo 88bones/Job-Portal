@@ -31,6 +31,7 @@ const UpdateUsers = ({ _id, role }) => {
     logo: "",
   });
   useEffect(() => {
+    //GET USER
     if (_id && role === "user") {
       axios
         .get(`http://localhost:3001/api/users/getUser/${_id}/${role}`)
@@ -50,6 +51,7 @@ const UpdateUsers = ({ _id, role }) => {
         .catch((err) => {
           console.log("error", err);
         });
+      //GET RECRUITER
     } else if (_id && role === "recruiter") {
       axios
         .get(`http://localhost:3001/api/users/getUser/${_id}/${role}`)
@@ -70,6 +72,7 @@ const UpdateUsers = ({ _id, role }) => {
         });
     }
   }, [_id, role]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;

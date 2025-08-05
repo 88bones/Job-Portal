@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchJobDetails } from "../services/getJobDetails";
 import { useSelector } from "react-redux";
-import axios from "axios";
+import "../Css/JobCard.css";
 import { postApplication } from "../services/postApplication";
 
 const JobCard = () => {
@@ -52,10 +52,15 @@ const JobCard = () => {
         )}
         <div className="job-card-holder">
           <div className="job-card-box">
-            <p>{jobData.postedBy?.companyname}</p>
-            <p>{jobData.title}</p>
-            <p>{jobData.address}</p>
-            <p>{jobData.description}</p>
+            <h2>{jobData.postedBy?.companyname}</h2>
+            <h3>Title: {jobData.title}</h3>
+            <p>Address: {jobData.address}</p>
+            <p>Description: {jobData.description}</p>
+            <p>Salary: {jobData.salary}</p>
+            <p>
+              Skills Required:{" "}
+              {Array.isArray(jobData.skills) ? jobData.skills.join(", ") : ""}
+            </p>
             <button onClick={handleApply}>Apply</button>
           </div>
         </div>
