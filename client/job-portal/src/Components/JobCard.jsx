@@ -10,6 +10,7 @@ const JobCard = () => {
   const { _id: userId } = useSelector((state) => state.user);
   const [jobData, setJobData] = useState([]);
   const [error, setError] = useState();
+  const [success, setSuccess] = useState();
 
   useEffect(() => {
     fetchJobDetails(jobId)
@@ -30,7 +31,7 @@ const JobCard = () => {
 
     const result = await postApplication(jobId, userId);
     if (result.success) {
-      console.log("Applied successfully!");
+      setSuccess(result.message);
     } else {
       setError(result.message);
     }
@@ -48,6 +49,14 @@ const JobCard = () => {
             style={{ color: "red", padding: "10px" }}
           >
             <p>{error}</p>
+          </div>
+        )}
+        {success && (
+          <div
+            className="error-message"
+            style={{ color: "green", padding: "10px" }}
+          >
+            <p>{success}</p>
           </div>
         )}
         <div className="job-card-holder">

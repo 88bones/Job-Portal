@@ -1,4 +1,5 @@
 const jobModel = require("../models/jobModel");
+const applicationModel = require("../models/applicationModel");
 
 const deleteJob = async (req, res) => {
   try {
@@ -8,6 +9,8 @@ const deleteJob = async (req, res) => {
     if (result.deletedCount === 0) {
       return res.status(404).json({ message: "Job not found!" });
     }
+
+    const appResult = await applicationModel.deleteMany({ jobId });
 
     res.status(200).json({ message: "Deleted!" });
   } catch (err) {
