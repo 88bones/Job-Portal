@@ -86,3 +86,13 @@
   border-radius: 8px;
   font-size: 15px;
 }
+
+.success-message {
+  background-color: #edffe9;
+  border-left: 4px solid greenyellow;
+  color: green;
+  padding: 12px 18px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  font-size: 15px;
+}

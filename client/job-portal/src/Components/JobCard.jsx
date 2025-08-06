@@ -53,7 +53,7 @@ const JobCard = () => {
         )}
         {success && (
           <div
-            className="error-message"
+            className="success-message"
             style={{ color: "green", padding: "10px" }}
           >
             <p>{success}</p>

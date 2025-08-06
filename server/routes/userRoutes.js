@@ -3,6 +3,9 @@ const UserModel = require("../models/userModel");
 const jwtGenerator = require("../utils/jwtGenerator");
 const { updateUser } = require("../controllers/updateController");
 const { getData } = require("../controllers/getDataController");
+const {
+  getRecommendedJobs,
+} = require("../controllers/getRecommendedJobController");
 
 const router = express.Router();
 
@@ -26,5 +29,7 @@ router.get("/getUsers", async (req, res) => {
 router.get("/getUser/:id/:role", getData);
 
 router.put("/updateUser/:id/:role", updateUser);
+
+router.get("/recommend/:userId", getRecommendedJobs);
 
 module.exports = router;
