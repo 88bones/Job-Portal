@@ -3,6 +3,7 @@ import defUser from "../Images/account.svg";
 import defRecruiter from "../Images/recDefault.png";
 import "../Css/UpdateUsers.css";
 import axios from "axios";
+import stringify from "stringify";
 
 const UpdateUsers = ({ _id, role }) => {
   const [imgError, setImgError] = useState("");
@@ -73,7 +74,6 @@ const UpdateUsers = ({ _id, role }) => {
     }
   }, [_id, role]);
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -90,31 +90,40 @@ const UpdateUsers = ({ _id, role }) => {
     }
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-
-    if (!file) return;
-
-    const validTypes = ["image/jpeg", "image/png", "image/jpg"];
-    if (!validTypes.includes(file.type)) {
-      setImgError("Upload image (jpeg, png, jpg)");
-      return;
-    }
-    setImgError("");
-    if (role === "user") {
-      setData((prev) => ({ ...prev, image: file }));
-    } else if (role === "recruiter") {
-      setDataRec((prev) => ({ ...prev, logo: file }));
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const payload = role === "user" ? data : dataRec;
+    const formData = new FormData();
+
+    if (role === "user") {
+      formData.append("fullname", data.fullname);
+      formData.append("email", data.email);
+      formData.append("address", data.address);
+      formData.append("phone", data.phone);
+      formData.append("skills", JSON.stringify(data.skills));
+
+      if (data.image) formData.append("image", data.image);
+      if (data.resume) formData.append("resume", data.resume);
+    } else if (role === "recruiter") {
+      formData.append("companyname", dataRec.companyname);
+      formData.append("industry", dataRec.industry);
+      formData.append("email", dataRec.email);
+      formData.append("phone", dataRec.phone);
+      formData.append("address", dataRec.address);
+
+      if (dataRec.logo) formData.append("logo", dataRec.logo);
+    }
 
     axios
-      .put(`http://localhost:3001/api/users/updateUser/${_id}/${role}`, payload)
+      .put(
+        `http://localhost:3001/api/users/updateUser/${_id}/${role}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       .then((response) => {
         setSuccess("Profile updated!");
       })
@@ -130,12 +139,7 @@ const UpdateUsers = ({ _id, role }) => {
         <form className="user-form" onSubmit={handleSubmit}>
           <div className="image">
             <img src={defUser} alt="" width="50px" />
-            <input
-              type="file"
-              name="image"
-              //onChange={(e) => setData({ ...data, image: e.target.files[0] })}
-              onChange={handleImageChange}
-            />
+            <input type="file" name="image" />
           </div>
           <span style={{ color: "red", fontSize: "14px" }}>{imgError}</span>
 

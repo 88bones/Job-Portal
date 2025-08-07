@@ -6,6 +6,7 @@ const { getData } = require("../controllers/getDataController");
 const {
   getRecommendedJobs,
 } = require("../controllers/getRecommendedJobController");
+const upload = require("../middleware/multer");
 
 const router = express.Router();
 
@@ -28,7 +29,15 @@ router.get("/getUsers", async (req, res) => {
 
 router.get("/getUser/:id/:role", getData);
 
-router.put("/updateUser/:id/:role", updateUser);
+router.put(
+  "/updateUser/:id/:role",
+  upload.fields([
+    { name: "image", maxCount: 1 },
+    { name: "resume", maxCount: 1 },
+    { name: "logo", maxCount: 1 },
+  ]),
+  updateUser
+);
 
 router.get("/recommend/:userId", getRecommendedJobs);
 

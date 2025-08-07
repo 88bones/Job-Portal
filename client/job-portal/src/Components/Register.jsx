@@ -35,6 +35,11 @@ const Register = () => {
       setError("Passwords do not match!!");
       return;
     }
+
+    if (data.password.length <= 6) {
+      setError("Password must be more or equal to 8 digits.");
+      return;
+    }
     Axios.post("http://localhost:3001/api/users/createUser", {
       fullname: data.fullname,
       email: data.email,

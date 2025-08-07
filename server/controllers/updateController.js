@@ -7,6 +7,20 @@ const updateUser = async (req, res) => {
     const role = req.params.role;
     const updatedData = req.body;
 
+    if (typeof req.body.skills === "string") {
+      req.body.skills = JSON.parse(req.body.skills);
+    }
+
+    if (req.files?.image) {
+      updatedData.image = req.files.image[0].filename;
+    }
+    if (req.files?.resume) {
+      updatedData.resume = req.files.resume[0].filename;
+    }
+    if (req.files?.logo) {
+      updatedData.logo = req.files.logo[0].filename;
+    }
+
     let result;
 
     if (role === "user") {
