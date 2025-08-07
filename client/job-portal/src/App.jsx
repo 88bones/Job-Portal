@@ -87,6 +87,7 @@ function App() {
           />
           <Route path="appliedJobs" element={<AppliedJobs />} />
         </Route>
+        <Route path="cv" element={<Dashboard />}></Route>
       </Routes>
     </Router>
   );

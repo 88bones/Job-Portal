@@ -1,5 +1,6 @@
 import React from "react";
 import "../Css/Cards.css";
+import { NavLink } from "react-router-dom";
 
 const Cards = () => {
   const Cards = [
@@ -8,7 +9,7 @@ const Cards = () => {
       info: "Unlock endless opportunities and connect with top employers. Let your skills shine and land your dream job.",
       img: "/",
       button: "Upload your CV",
-      path: "/",
+      path: "/cv",
     },
     {
       name: "For Employers",
@@ -26,7 +27,9 @@ const Cards = () => {
             <h3>{card.name}</h3>
             <p>{card.info}</p>
             <div className="card-btn" key={index}>
-              <button>{card.button}</button>
+              <button>
+                <NavLink to={card.path}>{card.button}</NavLink>
+              </button>
             </div>
           </div>
         ))}

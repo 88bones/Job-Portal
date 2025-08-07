@@ -14,9 +14,15 @@ const Home = ({ isOver, setIsOver }) => {
       <NavBar isOver={isOver} setIsOver={setIsOver} />
       <Banner isOver={isOver} />
       <Cards />
-      <JobListings />
 
-      {loggedIn && <RecommendedJobs />}
+      {loggedIn ? (
+        <>
+          <RecommendedJobs />
+          <JobListings />
+        </>
+      ) : (
+        <JobListings />
+      )}
     </div>
   );
 };

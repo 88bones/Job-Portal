@@ -50,3 +50,8 @@
     box-shadow: 0px 0px 6px skyblue;
     scale: 1.2;
 }
+
+.card-btn button a{
+    text-decoration: none;
+    color: white;
+}
