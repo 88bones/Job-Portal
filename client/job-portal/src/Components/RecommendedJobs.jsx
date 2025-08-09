@@ -9,14 +9,15 @@ import { fetchRecommendedJobs } from "../services/getRecommendedJobs";
 const JobListings = () => {
   const { _id: userId } = useSelector((state) => state.user);
   const [listOfJobs, setListOfJobs] = useState([]);
-  console.log(userId);
+  const [error, setError] = useState();
 
   useEffect(() => {
     fetchRecommendedJobs(userId)
       .then((data) => {
         setListOfJobs(data);
+        setError("");
       })
-      .catch((error) => console.log("Error fetching jobs: ", error));
+      .catch((error) => setError(error.message));
   }, [userId]);
 
   const getDaysRemaining = (expiryDate) => {
@@ -37,9 +38,14 @@ const JobListings = () => {
   return (
     <div className="jobs-grid-container">
       <h2>Recommended Jobs</h2>
+      <div className="eror">
+        <span className="error-message">{error}</span>
+      </div>
+
       <div className="jobs-grid">
         {listOfJobs.map((job) => {
           const expired = isExpired(job.expiryDate); // per-job
+
           return (
             <div key={job._id} className="job-card">
               <div className="job-header">

@@ -7,6 +7,9 @@ export const fetchRecommendedJobs = async (userId) => {
     );
     return res.data;
   } catch (err) {
-    throw err;
+    if (err.response && err.response.data && err.response.data.message) {
+      throw new Error(err.response.data.message);
+    }
+    throw new Error("Failed to fetch recommended jobs");
   }
 };

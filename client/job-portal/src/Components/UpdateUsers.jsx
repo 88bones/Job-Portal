@@ -214,7 +214,7 @@ const UpdateUsers = ({ _id, role }) => {
               type="file"
               name="image"
               //onChange={(e) => setData({ ...data, image: e.target.files[0] })}
-              onChange={handleImageChange}
+              // onChange={handleImageChange}
             />
           </div>
           <br />
