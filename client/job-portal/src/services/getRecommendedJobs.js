@@ -5,6 +5,9 @@ export const fetchRecommendedJobs = async (userId) => {
     const res = await axios.get(
       `http://localhost:3001/api/users/recommend/${userId}`
     );
+    if (res.data.jobs && res.data.jobs.length == 0) {
+      throw res.data.message;
+    }
     return res.data;
   } catch (err) {
     if (err.response && err.response.data && err.response.data.message) {

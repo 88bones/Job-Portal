@@ -16,10 +16,14 @@ const Home = ({ isOver, setIsOver }) => {
       <Cards />
 
       {loggedIn ? (
-        <>
-          <RecommendedJobs />
+        role === "recuiter" ? (
+          <>
+            <RecommendedJobs />
+            <JobListings />
+          </>
+        ) : (
           <JobListings />
-        </>
+        )
       ) : (
         <JobListings />
       )}

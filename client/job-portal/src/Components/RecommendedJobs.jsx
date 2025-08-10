@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { fetchRecommendedJobs } from "../services/getRecommendedJobs";
 
 const JobListings = () => {
-  const { _id: userId } = useSelector((state) => state.user);
+  const { _id: userId, role } = useSelector((state) => state.user);
   const [listOfJobs, setListOfJobs] = useState([]);
   const [error, setError] = useState();
 

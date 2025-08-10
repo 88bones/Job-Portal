@@ -59,6 +59,10 @@ const getRecommendedJobs = async (req, res) => {
       })
       .filter((item) => item.similarity > 0); // only keep relevant jobs
 
+    if (scoredJobs.length === 0) {
+      return res.status(400).json({ message: "No recommended jobs found" });
+    }
+
     // Step 6: Sort and return top 5
     const topJobs = scoredJobs
       .sort((a, b) => b.similarity - a.similarity)
