@@ -24,7 +24,7 @@ const AppliedJobs = () => {
 
   return (
     <div>
-      <h1>{fullname}'s Job Applications</h1>
+      <h1>{fullname}'s job applications</h1>
       {error && (
         <div
           className="error-message"

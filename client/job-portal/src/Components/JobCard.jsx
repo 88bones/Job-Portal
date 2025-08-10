@@ -7,7 +7,7 @@ import { postApplication } from "../services/postApplication";
 
 const JobCard = () => {
   const { _id: jobId } = useParams();
-  const { _id: userId } = useSelector((state) => state.user);
+  const { _id: userId, role } = useSelector((state) => state.user);
   const [jobData, setJobData] = useState([]);
   const [error, setError] = useState();
   const [success, setSuccess] = useState();
@@ -26,6 +26,11 @@ const JobCard = () => {
   const handleApply = async () => {
     if (!userId) {
       setError("Please login to apply");
+      return;
+    }
+
+    if (role === "recruiter") {
+      setError("Recruiter cannot apply for a job");
       return;
     }
 

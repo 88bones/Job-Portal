@@ -15,7 +15,7 @@ const UserSideBar = () => {
     barItems.push(
       { name: "Create Jobs", path: "/dashboard/createJobs" },
       { name: "Created Jobs", path: "/dashboard/createdJobs" },
-      { name: "Applications", path: "" }
+      { name: "Applications", path: "/dashboard/applicants" }
     );
   } else if (loggedIn && role === "user") {
     barItems.push({ name: "Applied Jobs", path: "/dashboard/appliedJobs" });

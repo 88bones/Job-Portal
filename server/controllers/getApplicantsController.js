@@ -4,10 +4,10 @@ const jobModel = require("../models/jobModel");
 const getApplicants = async (req, res) => {
   try {
     const { companyId } = req.params;
-    console.log("Company ID from params:", companyId);
+    // console.log("Company ID from params:", companyId);
 
     const jobs = await jobModel.find({ postedBy: companyId }).select("_id");
-    console.log("jobs:", jobs);
+    // console.log("jobs:", jobs);
     const jobIds = jobs.map((job) => job._id);
 
     const result = await applicationModel
