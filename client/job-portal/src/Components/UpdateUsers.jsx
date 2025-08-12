@@ -50,7 +50,9 @@ const UpdateUsers = () => {
             image: null,
             skills: Array.isArray(user.skills) ? user.skills : [],
           });
-          setImgPreview(user.image ? user.image : defUser);
+          setImgPreview(
+            user.image ? `http://localhost:3001/uploads/${image}` : defUser
+          );
         })
         .catch((err) => {
           console.log("error", err);

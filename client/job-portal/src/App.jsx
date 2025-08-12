@@ -24,6 +24,7 @@ import Applicants from "./Components/Applicants";
 function App() {
   const { fullname, role, _id, loggedIn } = useSelector((state) => state.user);
   const [isOver, setIsOver] = useState(false);
+  const [isSelected, setIsSelected] = useState();
 
   return (
     <Router>
@@ -73,7 +74,12 @@ function App() {
         </Route>
 
         {/* User Dashboard */}
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route
+          path="/dashboard"
+          element={
+            <Dashboard isSelected={isSelected} setIsSelected={setIsSelected} />
+          }
+        >
           <Route
             path="createjobs"
             element={<CreateJobs fullname={fullname} />}
@@ -84,7 +90,15 @@ function App() {
           />
           <Route path="updateUsers" element={<UpdateUsers />} />
           <Route path="appliedJobs" element={<AppliedJobs />} />
-          <Route path="applicants" element={<Applicants />} />
+          <Route
+            path="applicants"
+            element={
+              <Applicants
+                isSelected={isSelected}
+                setIsSelected={setIsSelected}
+              />
+            }
+          />
         </Route>
         <Route path="cv" element={<Dashboard />}></Route>
       </Routes>

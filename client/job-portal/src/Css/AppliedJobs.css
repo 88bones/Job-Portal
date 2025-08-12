@@ -24,3 +24,22 @@
     text-align: center;
     font-weight:500 ;
 }
+
+td button{
+   border: none;
+    padding: 5px 10px ;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.resume-btn{
+    background-color: var(--button);
+    color: white;
+}
+.shortlist{
+ background-color: lightgreen;
+}
+
+.reject{
+    background-color: red;
+}
