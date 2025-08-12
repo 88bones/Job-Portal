@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 import "../Css/AppliedJobs.css";
 import { fetchApplicants } from "../services/getApplicants";
 import { NavLink } from "react-router-dom";
+import { updateStatus } from "../services/putApplicationStatus";
 
-const Applicants = ({ isSelected, setIsSelected }) => {
+const Applicants = () => {
   const { _id: companyId, fullname } = useSelector((state) => state.user);
   const [applicantsData, setApplicantsData] = useState([]);
   const [error, setError] = useState();
@@ -25,6 +26,20 @@ const Applicants = ({ isSelected, setIsSelected }) => {
   //opens resume in new tab
   const viewResume = (resume) => {
     window.open(`http://localhost:3001/uploads/${resume}`, "_blank");
+  };
+
+  //application status
+  const handleStausChange = async (appId, status) => {
+    try {
+      await updateStatus(appId, status);
+      const updatedApplicants = applicantsData.map((app) =>
+        app._id === appId ? { ...app, status } : app
+      );
+      setApplicantsData(updatedApplicants);
+    } catch (err) {
+      //console.log("Status err:",err)
+      setError("Error!!");
+    }
   };
 
   return (
@@ -72,7 +87,9 @@ const Applicants = ({ isSelected, setIsSelected }) => {
                 <td>
                   <button
                     className="shortlist"
-                    onClick={() => setIsSelected("shortlisted")}
+                    onClick={() =>
+                      handleStausChange(applicants._id, "shortlisted")
+                    }
                   >
                     Shortlist
                   </button>
@@ -80,7 +97,9 @@ const Applicants = ({ isSelected, setIsSelected }) => {
                 <td>
                   <button
                     className="reject"
-                    onClick={() => setIsSelected("rejected")}
+                    onClick={() =>
+                      handleStausChange(applicants._id, "rejected")
+                    }
                   >
                     Reject
                   </button>

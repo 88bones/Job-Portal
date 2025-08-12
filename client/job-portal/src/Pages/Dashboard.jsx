@@ -4,19 +4,13 @@ import UserSideBar from "../Components/UserSideBar";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const Dashboard = ({ isSelected, setIsSelected }) => {
+const Dashboard = () => {
   const { fullname, loggedIn, role } = useSelector((state) => state.user);
 
   return (
     <>
       <div className="dashboard-container">
-        <UserSideBar
-          fullname={fullname}
-          role={role}
-          loggedIn={loggedIn}
-          isSelected={isSelected}
-          setIsSelected={setIsSelected}
-        />
+        <UserSideBar fullname={fullname} role={role} loggedIn={loggedIn} />
         <div className="dashboard-content">
           <Outlet />
         </div>

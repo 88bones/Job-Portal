@@ -25,7 +25,7 @@
     font-weight:500 ;
 }
 
-td button{
+td button,.success-msg,.reject-msg,.pending-msg{
    border: none;
     padding: 5px 10px ;
     border-radius: 10px;
@@ -36,10 +36,14 @@ td button{
     background-color: var(--button);
     color: white;
 }
-.shortlist{
+.shortlist,.success-msg{
  background-color: lightgreen;
 }
 
-.reject{
+.reject,.reject-msg{
     background-color: red;
+}
+
+.pending-msg{
+    background-color: grey;
 }

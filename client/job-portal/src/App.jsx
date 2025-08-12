@@ -74,12 +74,7 @@ function App() {
         </Route>
 
         {/* User Dashboard */}
-        <Route
-          path="/dashboard"
-          element={
-            <Dashboard isSelected={isSelected} setIsSelected={setIsSelected} />
-          }
-        >
+        <Route path="/dashboard" element={<Dashboard />}>
           <Route
             path="createjobs"
             element={<CreateJobs fullname={fullname} />}
@@ -90,15 +85,7 @@ function App() {
           />
           <Route path="updateUsers" element={<UpdateUsers />} />
           <Route path="appliedJobs" element={<AppliedJobs />} />
-          <Route
-            path="applicants"
-            element={
-              <Applicants
-                isSelected={isSelected}
-                setIsSelected={setIsSelected}
-              />
-            }
-          />
+          <Route path="applicants" element={<Applicants />} />
         </Route>
         <Route path="cv" element={<Dashboard />}></Route>
       </Routes>

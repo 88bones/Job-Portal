@@ -9,6 +9,7 @@ const AppliedJobs = () => {
   const { _id: userId, fullname } = useSelector((state) => state.user);
   const [applicationData, setApplicationData] = useState([]);
   const [error, setError] = useState();
+  const [isStatus, setIsStatus] = useState();
 
   // console.log(userId);
 
@@ -16,6 +17,7 @@ const AppliedJobs = () => {
     fetchAppliedJobs(userId)
       .then((application) => {
         setApplicationData(Array.isArray(application) ? application : []);
+        // console.log(applicationData);
       })
       .catch((err) => {
         setError("Error fetching application");
@@ -42,6 +44,7 @@ const AppliedJobs = () => {
               <th>Location</th>
               <th>Email</th>
               <th>Applied Date</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -53,6 +56,15 @@ const AppliedJobs = () => {
                 <td>{application.jobId?.postedBy?.email}</td>
                 <td>
                   {new Date(application?.appliedAt).toISOString().split("T")[0]}
+                </td>
+                <td>
+                  {application.status === "shortlisted" ? (
+                    <span className="success-msg">Short-Listed</span>
+                  ) : application.status === "pending" ? (
+                    <span className="pending-msg">Pending</span>
+                  ) : (
+                    <span className="reject-msg">Rejected</span>
+                  )}
                 </td>
               </tr>
             ))}
