@@ -39,7 +39,7 @@ const JobListings = () => {
     <div className="jobs-grid-container">
       <h2>Recommended Jobs</h2>
       <div className="eror">
-        <span className="error-message">{error}</span>
+        {error && <div className="error-message">{error}</div>}
       </div>
 
       <div className="jobs-grid">

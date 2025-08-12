@@ -3,12 +3,14 @@ import defUser from "../Images/account.svg";
 import defRecruiter from "../Images/recDefault.png";
 import "../Css/UpdateUsers.css";
 import axios from "axios";
-import stringify from "stringify";
+import { useSelector } from "react-redux";
 
-const UpdateUsers = ({ _id, role }) => {
+const UpdateUsers = () => {
+  const { _id, role } = useSelector((state) => state.user);
   const [imgError, setImgError] = useState("");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  const [imgPreview, setImgPreview] = useState(defUser);
 
   const [data, setData] = useState({
     fullname: "",
@@ -38,16 +40,17 @@ const UpdateUsers = ({ _id, role }) => {
         .get(`http://localhost:3001/api/users/getUser/${_id}/${role}`)
         .then((response) => {
           const user = response.data;
-          console.log(user);
+          // console.log(user);
           setData({
             fullname: user.fullname || "",
             email: user.email || "",
             address: user.address || "",
             phone: user.phone || "",
             resume: "",
-            image: "",
+            image: null,
             skills: Array.isArray(user.skills) ? user.skills : [],
           });
+          setImgPreview(user.image ? user.image : defUser);
         })
         .catch((err) => {
           console.log("error", err);
@@ -58,7 +61,7 @@ const UpdateUsers = ({ _id, role }) => {
         .get(`http://localhost:3001/api/users/getUser/${_id}/${role}`)
         .then((response) => {
           const recruiter = response.data;
-          console.log(recruiter);
+          // console.log(recruiter);
           setDataRec({
             companyname: recruiter.companyname || "",
             industry: recruiter.industry || "",
@@ -138,8 +141,18 @@ const UpdateUsers = ({ _id, role }) => {
       {role === "user" && (
         <form className="user-form" onSubmit={handleSubmit}>
           <div className="image">
-            <img src={defUser} alt="" width="50px" />
-            <input type="file" name="image" />
+            <img src={imgPreview} alt="Profile Picture" width="50px" />
+            <input
+              type="file"
+              name="image"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (file) {
+                  setData({ ...data, image: file });
+                  setImgPreview(URL.createObjectURL(file));
+                }
+              }}
+            />
           </div>
           <span style={{ color: "red", fontSize: "14px" }}>{imgError}</span>
 

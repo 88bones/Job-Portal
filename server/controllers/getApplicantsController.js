@@ -12,8 +12,11 @@ const getApplicants = async (req, res) => {
 
     const result = await applicationModel
       .find({ jobId: { $in: jobIds } })
-      .populate({ path: "userId", select: "fullname email address" })
-      .populate({ path: "jobId", select: "title" });
+      .populate({
+        path: "userId",
+        select: "fullname email address resume image",
+      })
+      .populate({ path: "jobId", select: "title logo" });
 
     res.json(result);
   } catch (err) {

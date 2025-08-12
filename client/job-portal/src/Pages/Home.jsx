@@ -17,12 +17,12 @@ const Home = ({ isOver, setIsOver }) => {
 
       {loggedIn ? (
         role === "recuiter" ? (
+          <JobListings />
+        ) : (
           <>
             <RecommendedJobs />
             <JobListings />
           </>
-        ) : (
-          <JobListings />
         )
       ) : (
         <JobListings />
