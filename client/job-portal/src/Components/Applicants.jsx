@@ -108,7 +108,6 @@ const Applicants = () => {
             ))}
           </tbody>
         </table>
-        {console.log(isSelected)}
       </div>
     </div>
   );

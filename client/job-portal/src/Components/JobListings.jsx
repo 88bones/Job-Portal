@@ -32,23 +32,27 @@ const JobListings = ({ selectedFilter, selectedIndustry }) => {
     return expiry < today;
   };
 
-  const selectedTime = [...listOfJobs].sort((a, b) => {
-    if (selectedFilter === "newest") {
-      return new Date(b.createdAt) - new Date(a.createdAt);
-    }
-    if (selectedFilter === "oldest") {
-      return new Date(a.createdAt) - new Date(b.createdAt);
-    }
-    if (selectedFilter === "nearest-deadline") {
-      return new Date(a.expiryDate) - new Date(b.expiryDate);
-    }
-    return 0;
-  });
+  const selectedTime = selectedFilter
+    ? [...listOfJobs].sort((a, b) => {
+        if (selectedFilter === "newest") {
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        }
+        if (selectedFilter === "oldest") {
+          return new Date(a.createdAt) - new Date(b.createdAt);
+        }
+        if (selectedFilter === "nearest-deadline") {
+          return new Date(a.expiryDate) - new Date(b.expiryDate);
+        }
+        if (selectedFilter === "all") return true;
+      })
+    : listOfJobs;
 
-  const filteredJobs = [...selectedTime].filter((job) => {
-    if (selectedIndustry === "all") return true;
-    return job.postedBy.industry === selectedIndustry;
-  });
+  const filteredJobs = selectedIndustry
+    ? [...selectedTime].filter((job) => {
+        if (selectedIndustry === "all") return true;
+        return job.postedBy.industry === selectedIndustry;
+      })
+    : listOfJobs;
 
   return (
     <div className="jobs-grid-container">
