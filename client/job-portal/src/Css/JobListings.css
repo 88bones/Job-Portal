@@ -111,11 +111,14 @@
 button:disabled{
     background-color: #888;
     cursor: not-allowed;
+    color: white;
+    font-weight: 700;
 }
 
-.apply-button a{
+.apply-button {
     text-decoration: none;
     color: white;
+    font-weight: 700;
 }
 
 .apply-button:hover {

@@ -40,7 +40,6 @@ const CreatedJobs = () => {
         <table>
           <thead>
             <tr>
-              <th></th>
               <th>Title</th>
               <th>Salary</th>
               {/* <th>Description</th> */}
@@ -56,7 +55,6 @@ const CreatedJobs = () => {
           <tbody>
             {jobData.map((job, index) => (
               <tr key={index}>
-                <td>{job._id}</td>
                 <td>{job.title}</td>
                 <td>{job.salary}</td>
                 {/* <td>{job.description}</td> */}

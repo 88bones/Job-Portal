@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "../Css/JobListings.css";
 import recDefault from "../Images/recDefault.png";
@@ -10,6 +10,7 @@ const JobListings = () => {
   const { _id: userId, role } = useSelector((state) => state.user);
   const [listOfJobs, setListOfJobs] = useState([]);
   const [error, setError] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchRecommendedJobs(userId)
@@ -77,8 +78,11 @@ const JobListings = () => {
                     Expired
                   </button>
                 ) : (
-                  <button className="apply-button">
-                    <NavLink to={`/applyJob/${job._id}`}>Apply now</NavLink>
+                  <button
+                    className="apply-button"
+                    onClick={() => navigate(`/applyJob/${job._id}`)}
+                  >
+                    Apply now
                   </button>
                 )}
               </div>

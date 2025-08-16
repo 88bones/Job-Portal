@@ -9,6 +9,7 @@ const Applicants = () => {
   const { _id: companyId, fullname } = useSelector((state) => state.user);
   const [applicantsData, setApplicantsData] = useState([]);
   const [error, setError] = useState();
+  const [success, setSucess] = useState();
 
   console.log(companyId);
 
@@ -36,6 +37,12 @@ const Applicants = () => {
         app._id === appId ? { ...app, status } : app
       );
       setApplicantsData(updatedApplicants);
+      //timeout for status
+      setSucess("Status updated!");
+      const timeout = setTimeout(() => {
+        setSucess("");
+      }, 2000);
+      return () => clearTimeout(timeout);
     } catch (err) {
       //console.log("Status err:",err)
       setError("Error!!");
@@ -45,20 +52,13 @@ const Applicants = () => {
   return (
     <div>
       <h1>{fullname}'s job applicants</h1>
-      {error && (
-        <div
-          className="error-message"
-          style={{ color: "red", padding: "10px" }}
-        >
-          <p>{error}</p>
-        </div>
-      )}
+
       <div className="jobs-table">
         <table>
           <thead>
             <tr>
               <th>Job Title</th>
-              <th>Company</th>
+              <th>Fullname</th>
               <th>Location</th>
               <th>Email</th>
               <th>Applied Date</th>
@@ -108,6 +108,20 @@ const Applicants = () => {
             ))}
           </tbody>
         </table>
+        <br />
+        {error && (
+          <div
+            className="error-message"
+            style={{ color: "red", padding: "10px" }}
+          >
+            <span>{error}</span>
+          </div>
+        )}
+        {success && (
+          <div className="success-message">
+            <span>{success}</span>
+          </div>
+        )}
       </div>
     </div>
   );
