@@ -24,7 +24,7 @@ import Applicants from "./Components/Applicants";
 function App() {
   const { fullname, role, _id, loggedIn } = useSelector((state) => state.user);
   const [isOver, setIsOver] = useState(false);
-  const [isSelected, setIsSelected] = useState();
+
 
   return (
     <Router>

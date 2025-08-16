@@ -20,9 +20,9 @@
     --font-heading:     "Figtree",   sans-serif;
 }
 
-
-
-
+html{
+    scroll-behavior: smooth;
+}
 body{
     background: var(--background); 
     font-family: var(--font-text);

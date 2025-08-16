@@ -14,13 +14,6 @@ const CreateJobs = ({ fullname }) => {
     { name: "Fellowship", value: "fellow" },
   ];
 
-  const industries = [
-    { name: "Information management", value: "it" },
-    { name: "Management", value: "mgm" },
-    { name: "Engineering", value: "er" },
-    { name: "Medical", value: "med" },
-  ];
-
   const levels = [
     { name: "Intern", value: "intern" },
     { name: "Junior", value: "jr" },
@@ -141,24 +134,6 @@ const CreateJobs = ({ fullname }) => {
             onChange={handleChange}
             placeholder="Negotiable or Amount"
           />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="industry">Industry</label>
-          <select
-            name="industry"
-            id="industry"
-            value={data.industry}
-            onChange={handleChange}
-            required
-          >
-            <option defaultValue>Industry</option>
-            {industries.map((industry, index) => (
-              <option key={index} value={industry.value}>
-                {industry.name}
-              </option>
-            ))}
-          </select>
         </div>
 
         <div className="form-group">

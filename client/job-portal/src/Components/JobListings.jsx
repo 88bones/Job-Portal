@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-
 import "../Css/JobListings.css";
 import recDefault from "../Images/recDefault.png";
 import { fetchJobListings } from "../services/getJobListings";
+import { useNavigate } from "react-router-dom";
 
-const JobListings = () => {
+const JobListings = ({ selectedFilter, selectedIndustry }) => {
   const [listOfJobs, setListOfJobs] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchJobListings()
       .then((data) => {
         setListOfJobs(data);
+        console.log(data);
       })
       .catch((error) => console.log("Error fetching jobs: ", error));
   }, []);
@@ -31,11 +32,29 @@ const JobListings = () => {
     return expiry < today;
   };
 
+  const selectedTime = [...listOfJobs].sort((a, b) => {
+    if (selectedFilter === "newest") {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    }
+    if (selectedFilter === "oldest") {
+      return new Date(a.createdAt) - new Date(b.createdAt);
+    }
+    if (selectedFilter === "nearest-deadline") {
+      return new Date(a.expiryDate) - new Date(b.expiryDate);
+    }
+    return 0;
+  });
+
+  const filteredJobs = [...selectedTime].filter((job) => {
+    if (selectedIndustry === "all") return true;
+    return job.postedBy.industry === selectedIndustry;
+  });
+
   return (
     <div className="jobs-grid-container">
       <h2>Available Jobs</h2>
       <div className="jobs-grid">
-        {listOfJobs.map((job) => {
+        {filteredJobs.map((job) => {
           const expired = isExpired(job.expiryDate); // per-job
           return (
             <div key={job._id} className="job-card">
@@ -68,8 +87,11 @@ const JobListings = () => {
                     Expired
                   </button>
                 ) : (
-                  <button className="apply-button">
-                    <NavLink to={`/applyJob/${job._id}`}>Apply now</NavLink>
+                  <button
+                    className="apply-button"
+                    onClick={() => navigate(`/applyJob/${job._id}`)}
+                  >
+                    Apply now
                   </button>
                 )}
               </div>
