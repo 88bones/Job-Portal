@@ -16,6 +16,7 @@ const JobListings = () => {
     fetchRecommendedJobs(userId)
       .then((data) => {
         setListOfJobs(data);
+        console.log(data);
         setError("");
       })
       .catch((error) => setError(error.message));
