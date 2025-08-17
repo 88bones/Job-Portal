@@ -2,8 +2,9 @@ import React from "react";
 import Profile from "../Pages/Profile";
 import NavBar from "./NavBar";
 import "../Css/Banner.css";
+import Notifications from "../Pages/Notifications";
 
-const Banner = ({ isOver }) => {
+const Banner = ({ isOver, isNoti, setIsNoti }) => {
   return (
     <>
       <div className="banner-main-container">
@@ -12,6 +13,13 @@ const Banner = ({ isOver }) => {
             <div>
               <Profile />
               {/* {console.log("hello mate")} */}
+            </div>
+          ) : (
+            ""
+          )}
+          {isNoti == true ? (
+            <div>
+              <Notifications />
             </div>
           ) : (
             ""

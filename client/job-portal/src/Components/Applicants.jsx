@@ -4,6 +4,7 @@ import "../Css/AppliedJobs.css";
 import { fetchApplicants } from "../services/getApplicants";
 import { NavLink } from "react-router-dom";
 import { updateStatus } from "../services/putApplicationStatus";
+import { updateNotification } from "../services/postNotification";
 
 const Applicants = () => {
   const { _id: companyId, fullname } = useSelector((state) => state.user);
@@ -29,10 +30,13 @@ const Applicants = () => {
     window.open(`http://localhost:3001/uploads/${resume}`, "_blank");
   };
 
-  //application status
   const handleStausChange = async (appId, status) => {
     try {
+      //application status
       await updateStatus(appId, status);
+      //update notification
+      await updateNotification(appId, status);
+
       const updatedApplicants = applicantsData.map((app) =>
         app._id === appId ? { ...app, status } : app
       );

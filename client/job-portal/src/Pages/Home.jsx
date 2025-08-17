@@ -6,13 +6,18 @@ import JobListings from "../Components/JobListings.jsx";
 import RecommendedJobs from "../Components/RecommendedJobs.jsx";
 import { useSelector } from "react-redux";
 
-const Home = ({ isOver, setIsOver }) => {
+const Home = ({ isOver, setIsOver, isNoti, setIsNoti }) => {
   const { role, loggedIn } = useSelector((state) => state.user);
 
   return (
     <div>
-      <NavBar isOver={isOver} setIsOver={setIsOver} />
-      <Banner isOver={isOver} />
+      <NavBar
+        isOver={isOver}
+        setIsOver={setIsOver}
+        isNoti={isNoti}
+        setIsNoti={setIsNoti}
+      />
+      <Banner isOver={isOver} isNoti={isNoti} />
       <Cards />
 
       {loggedIn ? (

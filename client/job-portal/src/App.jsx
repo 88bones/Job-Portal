@@ -6,7 +6,7 @@ import { useState } from "react";
 import Home from "./Pages/Home";
 import Jobs from "./Pages/Jobs";
 import AboutUs from "./Pages/AboutUs";
-import Profile from "./Pages/Profile";
+
 import Admin from "./Pages/Admin";
 import Register from "./Components/Register";
 import Users from "./Components/Users";
@@ -24,14 +24,21 @@ import Applicants from "./Components/Applicants";
 function App() {
   const { fullname, role, _id, loggedIn } = useSelector((state) => state.user);
   const [isOver, setIsOver] = useState(false);
-
+  const [isNoti, setIsNoti] = useState(false);
 
   return (
     <Router>
       <Routes>
         <Route
           path="/"
-          element={<Home isOver={isOver} setIsOver={setIsOver} />}
+          element={
+            <Home
+              isOver={isOver}
+              setIsOver={setIsOver}
+              isNoti={isNoti}
+              setIsNoti={setIsNoti}
+            />
+          }
         />
         <Route
           path="/jobs"
@@ -39,12 +46,12 @@ function App() {
             <Jobs
               isOver={isOver}
               setIsOver={setIsOver}
-              fullname={fullname}
-              role={role}
-              loggedIn={loggedIn}
+              isNoti={isNoti}
+              setIsNoti={setIsNoti}
             />
           }
         />
+
         <Route path="/aboutus" element={<AboutUs />} />
 
         {/* Apply Job */}

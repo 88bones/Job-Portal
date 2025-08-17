@@ -4,8 +4,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "../Css/NavBar.css";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/userSlice";
+import notification from "../Images/notification.svg";
 
-const NavBar = ({ isOver, setIsOver }) => {
+const NavBar = ({ isOver, setIsOver, isNoti, setIsNoti }) => {
   const MenuItems = [
     { name: "Home", path: "/" },
     { name: "Jobs", path: "/Jobs" },
@@ -46,6 +47,13 @@ const NavBar = ({ isOver, setIsOver }) => {
         </div>
 
         <div className="account-centre">
+          <img
+            src={notification}
+            alt="noti"
+            className="notification"
+            onClick={() => setIsNoti(!isNoti)}
+          />
+
           {loggedIn && fullname && (
             <span className="fullname-disp">
               <img src={Account} width="20px" alt="account icon" />
@@ -54,17 +62,25 @@ const NavBar = ({ isOver, setIsOver }) => {
           )}
 
           {loggedIn ? (
-            <button className="logout-btn" onClick={handleLogOut}>
+            <button
+              className="logout-btn"
+              onClick={handleLogOut}
+              style={{ fontWeight: "500" }}
+            >
               LogOut
             </button>
           ) : (
             <>
-              <button className="login-btn">
-                <NavLink to={"/login"}>Login</NavLink>
+              <button
+                className="login-btn"
+                onClick={() => navigate("/login")}
+                style={{ color: "var(--button)", fontWeight: "700" }}
+              >
+                Login
               </button>
               <button
                 onClick={() => setIsOver(!isOver)}
-                style={{ background: "var(--button)" }}
+                style={{ background: "var(--button)", fontWeight: "600" }}
               >
                 Register
               </button>

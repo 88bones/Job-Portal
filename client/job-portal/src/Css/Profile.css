@@ -1,8 +1,7 @@
 .profile-container{
     position: relative;
     z-index: 1000;
-    width: 100%;
-    
+    width: 100%; 
 }
 
 .profile-options{

@@ -21,15 +21,16 @@ header{
 
 .navbar ul li a{
     text-decoration: none;
-    color: var(--text)
+    color: var(--text);
+    font-weight: 500;
 }
 .navbar a:hover{
     text-shadow: 2px 2px 8px var(--heading);
 }
 
 .navbar .active-link {
-    font-weight: bold;
-    color: var(--hover)
+    font-weight: 900;
+    color: var(--hover);
 }
 
 .site-name{
@@ -59,9 +60,8 @@ header{
     border-radius: 8px;
 }
 
-.login-btn a{
+.login-btn{
     text-decoration: none;
-    color: var(--text);
     font-size: 0.9rem;
 }
 
@@ -78,5 +78,8 @@ header{
     position: relative;
 }
 
+.notification{
+    fill: aqua;
+}
 
 

@@ -5,10 +5,11 @@
     --background:       #F9FAFB;   /* overall page background */
     --sub-background:   #D5DEEF;   /* cards, nav bar, hero overlay, etc. */
     --sub-back:         #E5E7EB;   /* subtle borders / input outlines */
+    --notification:     #e0ddff;
 
     /* ===== Brand & Action Colors ===== */
     --button:           #4F46E5;   /* primary indigo (buttons, links) */
-    --hover:            #3730A3;   /* darker indigo for hover / active */
+    --hover:            #3730a3;   /* darker indigo for hover / active */
 
     /* ===== Typography ===== */
     /* --heading:          #111827;   */

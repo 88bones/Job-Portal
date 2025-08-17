@@ -73,7 +73,10 @@ const JobListings = () => {
               </div>
 
               <div className="footer">
-                <p className="company-info">{job.salary}</p>
+                <p className="company-info">
+                  {" "}
+                  {job.salary > 0 ? `Rs. ${job.salary}` : job.salary}
+                </p>
                 {expired ? (
                   <button className="apply-button" disabled>
                     Expired

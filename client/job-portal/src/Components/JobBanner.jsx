@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Profile from "../Pages/Profile";
+import Notifications from "../Pages/Notifications";
 import "../Css/JobBanner.css";
 
 const JobBanner = ({
@@ -8,6 +9,7 @@ const JobBanner = ({
   setSelectedFilter,
   selectedIndustry,
   setSelectedIndustry,
+  isNoti,
 }) => {
   return (
     <>
@@ -16,6 +18,13 @@ const JobBanner = ({
           {isOver == true ? (
             <div>
               <Profile />
+            </div>
+          ) : (
+            ""
+          )}
+          {isNoti == true ? (
+            <div>
+              <Notifications />
             </div>
           ) : (
             ""
