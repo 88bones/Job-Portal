@@ -4,6 +4,7 @@ import { fetchJobDetails } from "../services/getJobDetails";
 import { useSelector } from "react-redux";
 import "../Css/JobCard.css";
 import { postApplication } from "../services/postApplication";
+import RecommendedJobs from "./RecommendedJobs";
 
 const JobCard = () => {
   const { _id: jobId } = useParams();
@@ -46,7 +47,7 @@ const JobCard = () => {
     <>
       <div className="job-card-container">
         <header className="job-card-header">
-          <h1>Job card details</h1>
+          <h1>Job details</h1>
         </header>
         {error && (
           <div
@@ -67,18 +68,30 @@ const JobCard = () => {
         <div className="job-card-holder">
           <div className="job-card-box">
             <h2>{jobData.postedBy?.companyname}</h2>
-            <h3>Title: {jobData.title}</h3>
-            <p>Address: {jobData.address}</p>
-            <p>Description: {jobData.description}</p>
-            <p>Salary: {jobData.salary}</p>
             <p>
-              Skills Required:{" "}
+              <h3>{jobData.title}</h3>
+            </p>
+            <p>
+              <h4>Address:</h4> {jobData.address}
+            </p>
+            <p>
+              <h4>Description:</h4> {jobData.description}
+            </p>
+            <p>
+              <h4>Salary:</h4>
+              {jobData.salary > 0 ? `Rs. ${jobData.salary}` : jobData.salary}
+            </p>
+            <p>
+              <h4>Skills:</h4>{" "}
               {Array.isArray(jobData.skills) ? jobData.skills.join(", ") : ""}
             </p>
-            <button onClick={handleApply}>Apply</button>
+            <button style={{ width: "100%" }} onClick={handleApply}>
+              Apply
+            </button>
           </div>
         </div>
       </div>
+      <RecommendedJobs />
     </>
   );
 };

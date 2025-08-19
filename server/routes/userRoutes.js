@@ -7,6 +7,7 @@ const {
   getRecommendedJobs,
 } = require("../controllers/getRecommendedJobController");
 const upload = require("../middleware/multer");
+const { deleteUser } = require("../controllers/deleteUserController");
 
 const router = express.Router();
 
@@ -39,6 +40,7 @@ router.put(
   updateUser
 );
 
+router.delete("/deleteUser/:id/:role", deleteUser);
 router.get("/recommend/:userId", getRecommendedJobs);
 
 module.exports = router;

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../Css/Users.css";
 import axios from "axios";
+import { deleteUser } from "../services/deleteUser";
 
 const Users = () => {
   const [listOfUsers, setListOfUsers] = useState([]);
   const [selectedRole, setSelectedRole] = useState("");
+  const [success, setSuccess] = useState("");
 
   useEffect(() => {
     axios
@@ -18,6 +20,18 @@ const Users = () => {
   const filteredUsers = selectedRole
     ? listOfUsers.filter((user) => user.role === selectedRole)
     : listOfUsers;
+
+  //delete user
+  const handleDelete = async (id, role) => {
+    const result = await deleteUser(id, role);
+
+    if (result.error) {
+      setSuccess(result.error);
+    } else {
+      setSuccess(result.message);
+      setListOfUsers((prev) => prev.filter((u) => u._id !== id));
+    }
+  };
 
   return (
     <div className="users-container">
@@ -39,6 +53,7 @@ const Users = () => {
             <th>Address</th>
             <th>Phone</th>
             <th>Role</th>
+            <th>Id</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -50,14 +65,17 @@ const Users = () => {
               <td>{user.address}</td>
               <td>{user.phone}</td>
               <td>{user.role}</td>
+              <td>{user._id}</td>
               <td className="action">
-                <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={() => handleDelete(user._id, user.role)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <span style={{ color: "green" }}>{success}</span>
     </div>
   );
 };

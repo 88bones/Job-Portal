@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../Css/Users.css";
+import { deleteUser } from "../services/deleteUser";
 
 const Companies = () => {
   const tableHeads = [
@@ -14,6 +15,8 @@ const Companies = () => {
   const [listOfRecruiters, setListOfRecruiters] = useState([]);
   const [selectedIndustry, setSelectedIndustry] = useState();
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
   useEffect(() => {
     axios
       .get("http://localhost:3001/api/recruiters/getRecruiters")
@@ -30,6 +33,18 @@ const Companies = () => {
           (recruiter) => recruiter.industry === selectedIndustry
         )
       : listOfRecruiters;
+
+  //delete user
+  const handleDelete = async (id, role) => {
+    const result = await deleteUser(id, role);
+
+    if (result.error) {
+      setSuccess(result.error);
+    } else {
+      setSuccess(result.message);
+      setListOfUsers((prev) => prev.filter((u) => u._id !== id));
+    }
+  };
 
   return (
     <div className="users-container">
@@ -62,8 +77,11 @@ const Companies = () => {
                 <td>{recruiter.phone}</td>
                 <td>{recruiter.address}</td>
                 <td className="action">
-                  <button>Edit</button>
-                  <button>Delete</button>
+                  <button
+                    onClick={() => handleDelete(recruiter._id, recruiter.role)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
