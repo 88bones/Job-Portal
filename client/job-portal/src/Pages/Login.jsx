@@ -31,7 +31,7 @@ const Login = () => {
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
 
-        // Dispatch login to Redux
+        // dispatch login to redux
         dispatch(
           login({
             fullname: user.fullname,

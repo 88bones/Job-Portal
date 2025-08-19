@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Css/Register.css";
 import Axios from "axios";
-import { NavLink, Navigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [data, setData] = useState({
@@ -17,6 +17,8 @@ const Register = () => {
   const [error, setError] = useState("");
   const [formError, setFormError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,6 +62,7 @@ const Register = () => {
           address: "",
           phone: "",
         });
+        navigate("/login")
       })
       .catch((error) => {
         setFormError("Not submitted!");

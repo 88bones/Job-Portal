@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Css/Register.css";
 import Axios from "axios";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Recruiter = () => {
   const [data, setData] = useState({
@@ -17,6 +17,8 @@ const Recruiter = () => {
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -57,6 +59,7 @@ const Recruiter = () => {
           phone: "",
           address: "",
         });
+        navigate("/login");
       })
       .catch((error) => {
         console.log("Error submittting data", error);
@@ -145,7 +148,7 @@ const Recruiter = () => {
         </form>
         <div className="login">
           <p>
-            Already have an account? <NavLink>Login</NavLink>
+            Already have an account? <NavLink to="/login">Login</NavLink>
           </p>
         </div>
       </div>

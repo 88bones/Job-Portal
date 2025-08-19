@@ -30,24 +30,24 @@ const getRecommendedJobs = async (req, res) => {
     // Step 1: Normalize skills to lowercase
     const userSkills = user.skills.map((s) => s.toLowerCase());
 
-    // Step 2: Filter out jobs with empty or missing skills
+    // Filter out jobs with empty or missing skills
     jobs = jobs.filter(
       (job) => Array.isArray(job.skills) && job.skills.length > 0
     );
 
-    // Step 3: Combine all unique skills
+    // Step 2: Combine all unique skills
     const allSkillsSet = new Set([
       ...userSkills,
       ...jobs.flatMap((job) => job.skills.map((s) => s.toLowerCase())),
     ]);
     const allSkills = Array.from(allSkillsSet);
 
-    // Step 4: User vector
+    // Step 3: User vector
     const userVec = allSkills.map((skill) =>
       userSkills.includes(skill) ? 1 : 0
     );
 
-    // Step 5: Calculate similarity
+    // Step 4: Calculate similarity
     const scoredJobs = jobs
       .map((job) => {
         const jobSkills = job.skills.map((s) => s.toLowerCase());
@@ -57,14 +57,14 @@ const getRecommendedJobs = async (req, res) => {
         const similarity = cosineSimilarity(userVec, jobVec);
         return { job, similarity };
       })
-      .filter((item) => item.similarity > 0); // only keep relevant jobs
+      .filter((item) => item.similarity > 0); 
 
     //check job numbers
     if (scoredJobs.length === 0) {
       return res.status(400).json({ message: "No recommended jobs found" });
     }
 
-    // Step 6: Sort and return top 5
+    // Step 5: Sort and return top 5
     const topJobs = scoredJobs
       .sort((a, b) => b.similarity - a.similarity)
       .slice(0, 5)
