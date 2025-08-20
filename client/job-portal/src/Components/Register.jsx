@@ -62,7 +62,8 @@ const Register = () => {
           address: "",
           phone: "",
         });
-        navigate("/login")
+        //passing email as prop
+        navigate("/verify-otp", { state: { email: data.email } });
       })
       .catch((error) => {
         setFormError("Not submitted!");

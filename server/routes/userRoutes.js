@@ -1,7 +1,7 @@
 const express = require("express");
 const UserModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
-const jwtGenerator = require("../utils/jwtGenerator");
+const nodemailer = require("nodemailer");
 const { updateUser } = require("../controllers/updateController");
 const { getData } = require("../controllers/getDataController");
 const {
@@ -9,41 +9,55 @@ const {
 } = require("../controllers/getRecommendedJobController");
 const upload = require("../middleware/multer");
 const { deleteUser } = require("../controllers/deleteUserController");
+const { verifyOtp } = require("../controllers/verifyOtpController");
 
 const router = express.Router();
 
 router.post("/createUser", async (req, res) => {
   try {
     const { fullname, email, password, address, phone } = req.body;
-    //chekc if useremail exitst
+    //chekc if email exist
     const existingUser = await UserModel.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "Email already in use." });
     }
-
+    //hash passowrd
     const hashPassword = await bcrypt.hash(password, 10);
 
+    //generate otp of 6 digit
+    const otp = Math.floor(100000 + Math.random() * 900000);
+
+    //unverified user
     const newUser = new UserModel({
       fullname,
       email,
       password: hashPassword,
       address,
       phone,
+      isVerified: false,
+      otp,
     });
     await newUser.save();
-    const token = jwtGenerator(newUser._id);
-    res.json({
-      message: "Account created!",
-      token,
-      user: {
-        id: newUser._id,
-        fullname: newUser.fullname,
-        email: newUser.email,
-        address: newUser.address,
-        phone: newUser.phone,
-        role: newUser.role,
+
+    // transporter(Mailtrap sandbox for testing)
+    const transporter = nodemailer.createTransport({
+      host: "sandbox.smtp.mailtrap.io",
+      port: 587,
+      auth: {
+        user: process.env.MAIL_TRAP_USER,
+        pass: process.env.MAIL_TRAP_PASS,
       },
     });
+
+    //send mail
+    await transporter.sendMail({
+      from: "no-reply@yourapp.com",
+      to: email,
+      subject: "Your OTP Code",
+      text: `Your verification code is ${otp}`,
+    });
+
+    res.json({ message: "Check mail for OTP." });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -70,6 +84,7 @@ router.put(
   updateUser
 );
 
+router.post("/verify-otp", verifyOtp);
 router.delete("/deleteUser/:id/:role", deleteUser);
 router.get("/recommend/:userId", getRecommendedJobs);
 

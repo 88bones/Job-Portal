@@ -20,6 +20,7 @@ import CreatedJobs from "./Components/CreatedJobs";
 import ApplyJob from "./Pages/ApplyJob";
 import AppliedJobs from "./Components/AppliedJobs";
 import Applicants from "./Components/Applicants";
+import VerifyOtp from "./Components/VerifyOtp";
 
 function App() {
   const { fullname, role, _id, loggedIn } = useSelector((state) => state.user);
@@ -73,6 +74,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/recruiter" element={<Recruiter />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/verify-otp" element={<VerifyOtp />} />
 
         {/* Admin */}
         <Route path="/admin" element={<Admin loggedIn={loggedIn} />}>

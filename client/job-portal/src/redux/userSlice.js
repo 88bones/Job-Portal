@@ -5,6 +5,7 @@ const initialState = {
   role: localStorage.getItem("role") || "",
   loggedIn: !!localStorage.getItem("fullname"),
   _id: localStorage.getItem("_id") || "",
+  email: localStorage.getItem("email") | "",
 };
 
 const userSlice = createSlice({
@@ -12,20 +13,23 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     login(state, action) {
-      const { fullname, role, _id } = action.payload;
+      const { fullname, role, _id, email } = action.payload;
       state.fullname = fullname;
       state.role = role;
       state._id = _id;
+      state.email = email;
       state.loggedIn = true;
 
       localStorage.setItem("fullname", fullname);
       localStorage.setItem("role", role);
       localStorage.setItem("_id", _id);
+      localStorage.setItem("email", email);
     },
     logout(state) {
       state.fullname = "";
       state.role = "";
       state._id = "";
+      state.email = email;
       state.loggedIn = false;
 
       localStorage.clear();
@@ -38,8 +42,13 @@ const userSlice = createSlice({
       state.role = action.payload;
       localStorage.setItem("role", action.payload);
     },
+    updateEmail(state, action) {
+      state.email = action.payload;
+      localStorage.setItem("email", action.payload);
+    },
   },
 });
 
-export const { login, logout, updateFullname, updateRole } = userSlice.actions;
+export const { login, logout, updateFullname, updateRole, updateEmail } =
+  userSlice.actions;
 export default userSlice.reducer;

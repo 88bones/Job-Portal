@@ -37,11 +37,12 @@ const Login = () => {
             fullname: user.fullname,
             role: user.role,
             _id: user._id,
+            email: user.email,
           })
         );
 
-        localStorage.setItem("address", user.address);
-        localStorage.setItem("phone", user.phone);
+        // localStorage.setItem("address", user.address);
+        // localStorage.setItem("phone", user.phone);
 
         navigate("/");
       } else {

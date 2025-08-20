@@ -37,6 +37,13 @@ const userSchema = new mongoose.Schema({
   image: {
     type: String,
   },
+  isVerified: {
+    type: Boolean,
+    default: false,
+  },
+  otp: {
+    type: String,
+  },
 });
 
 const UserModel = mongoose.model("user", userSchema);
