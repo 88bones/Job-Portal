@@ -29,7 +29,7 @@ const userSlice = createSlice({
       state.fullname = "";
       state.role = "";
       state._id = "";
-      state.email = email;
+      state.email = "";
       state.loggedIn = false;
 
       localStorage.clear();

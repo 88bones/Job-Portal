@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { verifyOtpService } from "../services/verifyOtpService";
+import "../Css/VerifyOtp.css";
 
 const VerifyOtp = () => {
   const location = useLocation();
@@ -10,7 +11,7 @@ const VerifyOtp = () => {
   const [success, setSuccess] = useState("");
   const [otp, setOtp] = useState("");
 
-  const handleVerify = async () => {
+  const handleVerify = async (e) => {
     if (!email) setError("Email not found");
     if (!otp) setError("Enter OTP");
 
@@ -24,11 +25,24 @@ const VerifyOtp = () => {
   };
 
   return (
-    <div>
-      <h3>Check {email} for OTP</h3>
-      <h1>Enter OTP here:</h1>
-      <input type="text" value={otp} onChange={(e) => setOtp(e.target.value)} />
-      <button onClick={handleVerify}>Verify Account</button>
+    <div className="otp-container">
+      <div className="otp-holder">
+        <div className="otp-header">
+          <h1>Confirm OTP</h1>
+          <h4>Enter the OTP sent at {email}</h4>
+        </div>
+        <div className="otp-form">
+          <input
+            type="text"
+            value={otp}
+            onChange={(e) => setOtp(e.target.value)}
+          />
+          <button type="submit" onClick={handleVerify}>
+            Verify Account
+          </button>
+        </div>
+      </div>
+
       {error}
       {success}
     </div>
