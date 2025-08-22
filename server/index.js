@@ -7,6 +7,7 @@ const loginRoutes = require("./routes/loginRoutes");
 const jobRoutes = require("./routes/jobRoutes");
 const applicationRoutes = require("./routes/applicationRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
+const verifyRoutes = require("./routes/verify");
 const path = require("path");
 
 const app = express();
@@ -26,6 +27,8 @@ app.use("/api/applications", applicationRoutes);
 app.use("/api/notifications", notificationRoutes);
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+app.use("/api/verify-otp", verifyRoutes);
 
 app.listen(3001, () => {
   console.log("app is running ");

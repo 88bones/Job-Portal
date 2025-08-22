@@ -35,6 +35,13 @@ const recruiterSchema = new mongoose.Schema({
     type: "String",
     default: "Uploads/recDefault.png",
   },
+  isVerified: {
+    type: Boolean,
+    default: false,
+  },
+  otp: {
+    type: String,
+  },
 });
 
 const recruiterModel = mongoose.model("recruiter", recruiterSchema);

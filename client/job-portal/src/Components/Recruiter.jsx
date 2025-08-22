@@ -12,11 +12,13 @@ const Recruiter = () => {
     repassword: "",
     phone: "",
     address: "",
+    role: "recruiter",
     logo: "",
   });
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [formError, setFormError] = useState("");
 
   const navigate = useNavigate();
 
@@ -38,6 +40,10 @@ const Recruiter = () => {
       setError("Passowrds do not match");
       return;
     }
+    if (data.password.length <= 5) {
+      setError("Password must be more or equal to 6 digits.");
+      return;
+    }
     Axios.post("http://localhost:3001/api/recruiters/createRecruiter", {
       companyname: data.companyname,
       industry: data.industry,
@@ -45,26 +51,42 @@ const Recruiter = () => {
       password: data.password,
       phone: data.phone,
       address: data.address,
+      role: data.role,
     })
       .then((response) => {
         const { token } = response.data;
         localStorage.setItem("token", token);
         setSuccess("Account registered successfully!");
-        setData({
-          companyname: "",
-          industry: "",
-          email: "",
-          password: "",
-          repassword: "",
-          phone: "",
-          address: "",
+
+        setTimeout(() => {
+          //passing email as prop
+          navigate("/verify-otp", {
+            state: { email: data.email, role: data.role },
+          });
+          setData({
+            companyname: "",
+            industry: "",
+            email: "",
+            password: "",
+            repassword: "",
+            phone: "",
+            address: "",
+            role: "",
+          });
         });
-        navigate("/login");
-      })
+      }, 0)
       .catch((error) => {
-        console.log("Error submittting data", error);
+        if (error.response) {
+          // message from backend
+          setFormError(error.response.data.message);
+          //console.log("Backend error:", error.response.data.message);
+        } else {
+          // fallback (network or unknown error)
+          setFormError(error.message);
+          //console.log("Error submitting data:", error);
+        }
       });
-    console.log("Form Data Submitted", data);
+    //onsole.log("Form Data Submitted", data);
   };
 
   return (
@@ -144,7 +166,7 @@ const Recruiter = () => {
               {success}
             </span>
           )}
-          {error && <span style={{ color: "red" }}>{error}</span>}
+          {formError && <span style={{ color: "red" }}>{formError}</span>}
         </form>
         <div className="login">
           <p>

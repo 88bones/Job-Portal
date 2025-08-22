@@ -7,6 +7,7 @@ const VerifyOtp = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const email = location.state?.email || "";
+  const role = location.state?.role || "";
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [otp, setOtp] = useState("");
@@ -14,8 +15,9 @@ const VerifyOtp = () => {
   const handleVerify = async (e) => {
     if (!email) setError("Email not found");
     if (!otp) setError("Enter OTP");
+    if (!role) setError("Role not found");
 
-    const result = await verifyOtpService(email, otp);
+    const result = await verifyOtpService(email, otp, role);
     if (result.success) {
       setSuccess(result.message);
       navigate("/login");
@@ -23,6 +25,7 @@ const VerifyOtp = () => {
       setError(result.error);
     }
   };
+  console.log(role);
 
   return (
     <div className="otp-container">

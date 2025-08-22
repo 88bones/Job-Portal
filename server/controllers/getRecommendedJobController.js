@@ -57,7 +57,7 @@ const getRecommendedJobs = async (req, res) => {
         const similarity = cosineSimilarity(userVec, jobVec);
         return { job, similarity };
       })
-      .filter((item) => item.similarity > 0); 
+      .filter((item) => item.similarity > 0);
 
     //check job numbers
     if (scoredJobs.length === 0) {

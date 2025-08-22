@@ -11,6 +11,7 @@ const Register = () => {
     repassword: "",
     address: "",
     phone: "",
+    role: "user",
     resume: null,
   });
 
@@ -38,8 +39,8 @@ const Register = () => {
       return;
     }
 
-    if (data.password.length <= 6) {
-      setError("Password must be more or equal to 8 digits.");
+    if (data.password.length <= 5) {
+      setError("Password must be more or equal to 6 digits.");
       return;
     }
     Axios.post("http://localhost:3001/api/users/createUser", {
@@ -48,28 +49,45 @@ const Register = () => {
       password: data.password,
       address: data.address,
       phone: data.phone,
+      role: data.role,
     })
+
       .then((response) => {
         const { token, user } = response.data;
         localStorage.setItem("token", token);
         // console.log("Token:", token);
         setSuccess("Account created successfully!");
-        setData({
-          fullname: "",
-          email: "",
-          password: "",
-          repassword: "",
-          address: "",
-          phone: "",
-        });
         //passing email as prop
-        navigate("/verify-otp", { state: { email: data.email } });
-      })
+
+        //resets after navigate
+        setTimeout(() => {
+          navigate("/verify-otp", {
+            state: { email: data.email, role: data.role },
+          });
+          setData({
+            fullname: "",
+            email: "",
+            password: "",
+            repassword: "",
+            address: "",
+            phone: "",
+            role: "",
+          });
+        });
+      }, 0)
       .catch((error) => {
-        setFormError("Not submitted!");
-        console.log("Error submitting data.", error);
+        if (error.response) {
+          // message from backend
+          setFormError(error.response.data.message);
+          //console.log("Backend error:", error.response.data.message);
+        } else {
+          // fallback (network or unknown error)
+          setFormError(error.message);
+          //console.log("Error submitting data:", error);
+        }
       });
-    console.log("Form Data Submitted:", data);
+    //console.log("Form Data Submitted:", data);
+    console.log(role);
   };
 
   return (

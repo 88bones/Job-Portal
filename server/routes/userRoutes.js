@@ -9,7 +9,6 @@ const {
 } = require("../controllers/getRecommendedJobController");
 const upload = require("../middleware/multer");
 const { deleteUser } = require("../controllers/deleteUserController");
-const { verifyOtp } = require("../controllers/verifyOtpController");
 
 const router = express.Router();
 
@@ -84,7 +83,6 @@ router.put(
   updateUser
 );
 
-router.post("/verify-otp", verifyOtp);
 router.delete("/deleteUser/:id/:role", deleteUser);
 router.get("/recommend/:userId", getRecommendedJobs);
 
