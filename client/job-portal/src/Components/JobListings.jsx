@@ -52,7 +52,9 @@ const JobListings = ({ selectedFilter, selectedIndustry }) => {
         if (selectedIndustry === "all") return true;
         return job.postedBy.industry === selectedIndustry;
       })
-    : listOfJobs;
+    : listOfJobs.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
 
   return (
     <div className="jobs-grid-container">
@@ -68,12 +70,12 @@ const JobListings = ({ selectedFilter, selectedIndustry }) => {
                   alt="Company Logo"
                   className="company-logo"
                 />
-                <div className="company-info">
+                <dilisov className="company-info">
                   <p className="company-name">{job.postedBy?.companyname}</p>
                   <p className="posted-days">
                     {getDaysRemaining(job.expiryDate)}
                   </p>
-                </div>
+                </dilisov>
               </div>
 
               <h3 className="job-title">{job.title}</h3>

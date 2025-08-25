@@ -21,6 +21,7 @@ import ApplyJob from "./Pages/ApplyJob";
 import AppliedJobs from "./Components/AppliedJobs";
 import Applicants from "./Components/Applicants";
 import VerifyOtp from "./Components/VerifyOtp";
+import JobsDash from "./Components/JobsDash";
 
 function App() {
   const { fullname, role, _id, loggedIn } = useSelector((state) => state.user);
@@ -80,6 +81,7 @@ function App() {
         <Route path="/admin" element={<Admin loggedIn={loggedIn} />}>
           <Route path="users" element={<Users />} />
           <Route path="companies" element={<Companies />} />
+          <Route path="jobs" element={<JobsDash />} />
         </Route>
 
         {/* User Dashboard */}

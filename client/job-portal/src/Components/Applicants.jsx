@@ -81,12 +81,16 @@ const Applicants = () => {
                   {new Date(applicants?.appliedAt).toISOString().split("T")[0]}
                 </td>
                 <td>
-                  <button
-                    className="resume-btn"
-                    onClick={() => viewResume(applicants.userId?.resume)}
-                  >
-                    View Resume
-                  </button>
+                  {applicants.userId?.resume ? (
+                    <button
+                      className="resume-btn"
+                      onClick={() => viewResume(applicants.userId?.resume)}
+                    >
+                      View Resume
+                    </button>
+                  ) : (
+                    <button disabled>No Resume</button>
+                  )}
                 </td>
                 <td>
                   <button

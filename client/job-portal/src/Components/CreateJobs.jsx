@@ -58,6 +58,7 @@ const CreateJobs = ({ fullname }) => {
     })
       .then((response) => {
         setSuccess("Job created.");
+        setError("");
         setData({
           title: "",
           description: "",
@@ -229,8 +230,16 @@ const CreateJobs = ({ fullname }) => {
           />
         </div>
         <button type="submit">Create Job</button>
-        {success && <span style={{ color: "green" }}>{success}</span>}
-        {error && <span style={{ color: "red" }}>{error}</span>}
+        {success && (
+          <span className="success-message" style={{ color: "green" }}>
+            {success}
+          </span>
+        )}
+        {error && (
+          <span className="error-message" style={{ color: "red" }}>
+            {error}
+          </span>
+        )}
       </form>
     </div>
   );

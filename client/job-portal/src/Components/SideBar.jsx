@@ -7,8 +7,7 @@ const SideBar = () => {
   const barItems = [
     { name: "Users", path: "/admin/users" },
     { name: "Companies", path: "/admin/companies" },
-    { name: "Jobs", path: "" },
-    { name: "Something", path: "" },
+    { name: "Jobs", path: "/admin/jobs" },
   ];
 
   const { fullname } = useSelector((state) => state.user);
