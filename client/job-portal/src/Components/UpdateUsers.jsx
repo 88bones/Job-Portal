@@ -46,8 +46,8 @@ const UpdateUsers = () => {
             email: user.email || "",
             address: user.address || "",
             phone: user.phone || "",
-            resume: "",
-            image: null,
+            resume: user.resume || "",
+            image: user.image || "",
             skills: Array.isArray(user.skills) ? user.skills : [],
           });
           setImgPreview(
@@ -157,7 +157,6 @@ const UpdateUsers = () => {
             />
           </div>
           <span style={{ color: "red", fontSize: "14px" }}>{imgError}</span>
-
           <input
             type="text"
             name="fullname"
@@ -212,6 +211,7 @@ const UpdateUsers = () => {
               onChange={(e) => setData({ ...data, resume: e.target.files[0] })}
             />
           </div>
+          <label htmlFor="resumeview">Current Resume: {data.resume}</label>
 
           <button type="submit">Save user</button>
           <span style={{ color: "green", fontSize: "14px" }}>{success}</span>

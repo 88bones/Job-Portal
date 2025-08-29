@@ -20,6 +20,13 @@ router.post("/loginUsers", async (req, res) => {
 
     const account = user || recruiter;
 
+    //Check if verified
+    if (!account.isVerified) {
+      return res.status(401).json({
+        message: "Account not verified. Please verify your email first.",
+      });
+    }
+
     // Compare password using bcrypt
     const isMatch = await bcrypt.compare(password, account.password);
     if (!isMatch) {

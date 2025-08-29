@@ -9,12 +9,16 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="dashboard-container">
-        <UserSideBar fullname={fullname} role={role} loggedIn={loggedIn} />
-        <div className="dashboard-content">
-          <Outlet />
+      {loggedIn ? (
+        <div className="dashboard-container">
+          <UserSideBar fullname={fullname} role={role} loggedIn={loggedIn} />
+          <div className="dashboard-content">
+            <Outlet />
+          </div>
         </div>
-      </div>
+      ) : (
+        "Login required"
+      )}
     </>
   );
 };

@@ -22,6 +22,7 @@ import AppliedJobs from "./Components/AppliedJobs";
 import Applicants from "./Components/Applicants";
 import VerifyOtp from "./Components/VerifyOtp";
 import JobsDash from "./Components/JobsDash";
+import SearchJobs from "./Components/SearchJobs";
 
 function App() {
   const { fullname, role, _id, loggedIn } = useSelector((state) => state.user);
@@ -53,7 +54,7 @@ function App() {
             />
           }
         />
-
+        <Route path="/search/:keyword" element={<SearchJobs />} />
         <Route path="/aboutus" element={<AboutUs />} />
 
         {/* Apply Job */}

@@ -53,7 +53,7 @@ const JobListings = ({ selectedFilter, selectedIndustry }) => {
         return job.postedBy.industry === selectedIndustry;
       })
     : listOfJobs.sort((a, b) => {
-        return new Date(b.createdAt) - new Date(a.createdAt);
+        return new Date(b.expiryDate) - new Date(a.expiryDate);
       });
 
   return (
@@ -70,12 +70,12 @@ const JobListings = ({ selectedFilter, selectedIndustry }) => {
                   alt="Company Logo"
                   className="company-logo"
                 />
-                <dilisov className="company-info">
+                <div className="company-info">
                   <p className="company-name">{job.postedBy?.companyname}</p>
                   <p className="posted-days">
                     {getDaysRemaining(job.expiryDate)}
                   </p>
-                </dilisov>
+                </div>
               </div>
 
               <h3 className="job-title">{job.title}</h3>

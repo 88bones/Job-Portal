@@ -1,10 +1,20 @@
-import React from "react";
+import { React, useState } from "react";
 import Profile from "../Pages/Profile";
-import NavBar from "./NavBar";
+
 import "../Css/Banner.css";
 import Notifications from "../Pages/Notifications";
+import { useNavigate } from "react-router-dom";
 
-const Banner = ({ isOver, isNoti, setIsNoti }) => {
+const Banner = ({ isOver, isNoti }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    if (e.key === "Enter" || e.type === "click") {
+      navigate(`/search/${searchTerm}`);
+    }
+  };
+
   return (
     <>
       <div className="banner-main-container">
@@ -33,14 +43,14 @@ const Banner = ({ isOver, isNoti, setIsNoti }) => {
             </h1>
             <p>Browse thousands of job listings from top companies.</p>
             <div className="job-params">
-              <input type="text" placeholder="Job Title..." />
-              <select>
-                <option value="">City</option>
-                <option value="">City</option>
-              </select>
-              <select name="" id="">
-                <option value="">Category</option>
-              </select>
+              <input
+                type="text"
+                placeholder="Job Title..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={handleSearch}
+              />
+              <button onClick={handleSearch}>Search</button>
             </div>
           </div>
         </div>

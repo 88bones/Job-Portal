@@ -1,6 +1,6 @@
 const express = require("express");
 const JobModel = require("../models/jobModel");
-const { getJob } = require("../controllers/getJobController");
+const { getJob, searchJob } = require("../controllers/getJobController");
 const { getJobApply } = require("../controllers/getJobApply");
 const { jobApply } = require("../controllers/postApplyController");
 const { deleteJob } = require("../controllers/deleteJobController");
@@ -34,5 +34,6 @@ router.get("/getJob/:id", getJob);
 router.get("/getJobApply/:_id", getJobApply);
 router.post("/apply/:jobId", jobApply);
 router.delete("/deleteJob/:id", deleteJob);
+router.get("/search/:title", searchJob);
 
 module.exports = router;

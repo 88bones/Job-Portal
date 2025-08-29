@@ -9,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -46,11 +47,16 @@ const Login = () => {
 
         navigate("/");
       } else {
-        setError("Login failed.");
+        setError(message || "Login failed");
       }
     } catch (err) {
       console.error(err);
-      setError("Credentials Invalid!!");
+
+      if (err.response && err.response.data && err.response.data.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("Credentials Invalid!!");
+      }
     }
   };
 

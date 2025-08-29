@@ -1,4 +1,5 @@
 const JobModel = require("../models/jobModel");
+const RecruiterModel = require("../models/recruiterModel");
 
 const getJob = async (req, res) => {
   try {
@@ -12,4 +13,16 @@ const getJob = async (req, res) => {
   }
 };
 
-module.exports = { getJob };
+const searchJob = async (req, res) => {
+  try {
+    const { title } = req.params;
+    const jobs = await JobModel.find({
+      title: { $regex: title, $options: "i" },
+    }).populate("postedBy", "companyname industry");
+    res.json(jobs);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+module.exports = { getJob, searchJob };

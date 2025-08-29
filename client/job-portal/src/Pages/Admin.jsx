@@ -5,17 +5,19 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Admin = () => {
-  const { loggedIn } = useSelector((state) => state.user);
+  const { loggedIn, role } = useSelector((state) => state.user);
 
   return (
     <>
-      {loggedIn && (
+      {loggedIn && role === "admin" ? (
         <div className="admin-dashboard ">
           <SideBar />
           <div className="admin-content">
             <Outlet />
           </div>
         </div>
+      ) : (
+        "users CANNOT access"
       )}
     </>
   );
