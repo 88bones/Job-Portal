@@ -96,3 +96,12 @@
   border-radius: 8px;
   font-size: 15px;
 }
+
+.job-image{
+  display: flex;
+  gap: 10px;
+}
+
+.job-image h3{
+  margin-top: 15px;
+}

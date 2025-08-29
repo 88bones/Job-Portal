@@ -14,11 +14,22 @@ const storage = multer.diskStorage({
 
 //filter for allowed file types
 const fileFilter = (req, file, cb) => {
-  const allowed = ["image/jpeg", "image/png", "image/jpg", "application/pdf"];
-  if (allowed.includes(file.mimetype)) {
-    cb(null, true);
+  if (file.fieldname === "image" || file.fieldname === "logo") {
+    // Only allow images
+    if (["image/jpeg", "image/png", "image/jpg"].includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only image files are allowed for profile/logo"), false);
+    }
+  } else if (file.fieldname === "resume") {
+    // Only allow PDFs
+    if (file.mimetype === "application/pdf") {
+      cb(null, true);
+    } else {
+      cb(new Error("Only PDF files are allowed for resume"), false);
+    }
   } else {
-    cb(new Error("Invalid file type"), false);
+    cb(new Error("Invalid field for file upload"), false);
   }
 };
 

@@ -52,8 +52,11 @@ const JobListings = () => {
             <div key={job._id} className="job-card">
               <div className="job-header">
                 <img
-                  src={recDefault}
-                  alt="Company Logo"
+                  src={
+                    job.postedBy?.logo
+                      ? `http://localhost:3001/uploads/${job.postedBy?.logo}`
+                      : recDefault
+                  }
                   className="company-logo"
                 />
                 <div className="company-info">

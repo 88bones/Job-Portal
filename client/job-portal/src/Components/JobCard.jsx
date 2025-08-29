@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import "../Css/JobCard.css";
 import { postApplication } from "../services/postApplication";
 import RecommendedJobs from "./RecommendedJobs";
+import recDefault from "../Images/recDefault.png";
 
 const JobCard = () => {
   const { _id: jobId } = useParams();
@@ -65,12 +66,20 @@ const JobCard = () => {
             <p>{success}</p>
           </div>
         )}
+
         <div className="job-card-holder">
           <div className="job-card-box">
-            <h2>{jobData.postedBy?.companyname}</h2>
-            <p>
+            <div className="job-image">
+              <img
+                src={
+                  jobData.postedBy?.logo
+                    ? `http://localhost:3001/uploads/${jobData.postedBy?.logo}`
+                    : recDefault
+                }
+                width="60px"
+              />
               <h3>{jobData.title}</h3>
-            </p>
+            </div>
             <p>
               <h4>Address:</h4> {jobData.address}
             </p>

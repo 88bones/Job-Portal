@@ -22,7 +22,6 @@ const SearchJobs = () => {
     fetchJobs();
   }, [keyword]);
 
-  // helper function
   const getDaysRemaining = (expiryDate) => {
     const today = new Date();
     const expiry = new Date(expiryDate);
@@ -44,10 +43,14 @@ const SearchJobs = () => {
                 <div key={job._id} className="job-card">
                   <div className="job-header">
                     <img
-                      src={recDefault}
-                      alt="Company Logo"
+                      src={
+                        job.postedBy?.logo
+                          ? `http://localhost:3001/uploads/${job.postedBy?.logo}`
+                          : recDefault
+                      }
                       className="company-logo"
                     />
+
                     <div className="company-info">
                       <p className="company-name">
                         {job.postedBy?.companyname}

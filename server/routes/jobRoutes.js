@@ -22,7 +22,7 @@ router.get("/getJobs", async (req, res) => {
   try {
     const result = await JobModel.find({}).populate(
       "postedBy",
-      "companyname industry"
+      "companyname industry logo"
     );
     res.json(result);
   } catch (err) {

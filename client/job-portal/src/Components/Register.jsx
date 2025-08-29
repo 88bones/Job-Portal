@@ -58,12 +58,11 @@ const Register = () => {
         // console.log("Token:", token);
         setSuccess("Account created successfully!");
         //passing email as prop
-
+        navigate("/verify-otp", {
+          state: { email: data.email, role: data.role },
+        });
         //resets after navigate
         setTimeout(() => {
-          navigate("/verify-otp", {
-            state: { email: data.email, role: data.role },
-          });
           setData({
             fullname: "",
             email: "",

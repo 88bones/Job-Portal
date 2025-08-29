@@ -31,7 +31,7 @@ const recruiterSchema = new mongoose.Schema({
     type: String,
     default: "recruiter",
   },
-  image: {
+  logo: {
     type: "String",
     default: "Uploads/recDefault.png",
   },

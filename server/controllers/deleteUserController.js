@@ -10,13 +10,29 @@ const deleteUser = async (req, res) => {
 
     let result;
     if (role === "user") {
-      result = await userModel.deleteOne({ _id: id });
-      await applicationModel.deleteMany({ _id: id });
+      // Delete the user
+      const result = await userModel.deleteOne({ _id: id });
+
+      const userJobs = await jobModel.find({ postedBy: id }).select("_id");
+      const jobIds = userJobs.map((job) => job._id);
+
+      if (jobIds.length > 0) {
+        await applicationModel.deleteMany({ jobId: { $in: jobIds } });
+      }
     }
 
     if (role === "recruiter") {
-      result = await recruiterModel.deleteOne({ _id: id });
-      await jobModel.deleteMany({ _id: id });
+      // Delete the recruiter
+      const result = await recruiterModel.deleteOne({ _id: id });
+
+      const jobs = await jobModel.find({ postedBy: id }).select("_id");
+      const jobIds = jobs.map((job) => job._id);
+
+      await jobModel.deleteMany({ postedBy: id });
+
+      if (jobIds.length > 0) {
+        await applicationModel.deleteMany({ jobId: { $in: jobIds } });
+      }
     }
 
     if (result.deletedCount === 0) {

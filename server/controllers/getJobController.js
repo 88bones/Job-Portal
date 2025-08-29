@@ -18,7 +18,7 @@ const searchJob = async (req, res) => {
     const { title } = req.params;
     const jobs = await JobModel.find({
       title: { $regex: title, $options: "i" },
-    }).populate("postedBy", "companyname industry");
+    }).populate("postedBy", "companyname industry logo");
     res.json(jobs);
   } catch (err) {
     res.status(500).json({ error: err.message });

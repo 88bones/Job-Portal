@@ -10,7 +10,7 @@ const Banner = ({ isOver, isNoti }) => {
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
-    if (e.key === "Enter" || e.type === "click") {
+    if (e.key === "Enter") {
       navigate(`/search/${searchTerm}`);
     }
   };
@@ -50,7 +50,6 @@ const Banner = ({ isOver, isNoti }) => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyDown={handleSearch}
               />
-              <button onClick={handleSearch}>Search</button>
             </div>
           </div>
         </div>

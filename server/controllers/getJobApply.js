@@ -5,7 +5,7 @@ const getJobApply = async (req, res) => {
     const _id = req.params;
     const result = await JobModel.findOne({ _id: _id }).populate(
       "postedBy",
-      "companyname"
+      "companyname logo"
     );
     if (!result) {
       return res.status(404).json({ message: "Job not found" });

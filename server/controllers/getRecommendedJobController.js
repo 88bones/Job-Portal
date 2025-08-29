@@ -21,7 +21,7 @@ const getRecommendedJobs = async (req, res) => {
     const { userId } = req.params;
 
     const user = await User.findById(userId);
-    let jobs = await Job.find().populate("postedBy", "companyname");
+    let jobs = await Job.find().populate("postedBy", "companyname logo");
 
     if (!user || !user.skills || user.skills.length === 0) {
       return res.status(400).json({ message: "User has no skills listed" });

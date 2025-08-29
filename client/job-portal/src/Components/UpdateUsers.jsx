@@ -11,6 +11,7 @@ const UpdateUsers = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [imgPreview, setImgPreview] = useState(defUser);
+  const [logoPreview, setLogoPreview] = useState(defRecruiter);
 
   const [data, setData] = useState({
     fullname: "",
@@ -51,7 +52,7 @@ const UpdateUsers = () => {
             skills: Array.isArray(user.skills) ? user.skills : [],
           });
           setImgPreview(
-            user.image ? `http://localhost:3001/uploads/${image}` : defUser
+            user.image ? `http://localhost:3001/uploads/${user.image}` : defUser
           );
         })
         .catch((err) => {
@@ -70,8 +71,13 @@ const UpdateUsers = () => {
             email: recruiter.email || "",
             phone: recruiter.phone || "",
             address: recruiter.address || "",
-            logo: "",
+            logo: recruiter.logo || "",
           });
+          setLogoPreview(
+            recruiter.logo
+              ? `http://localhost:3001/uploads/${recruiter.logo}`
+              : defRecruiter
+          );
         })
         .catch((err) => {
           console.log(err);
@@ -224,12 +230,17 @@ const UpdateUsers = () => {
       {role === "recruiter" && (
         <form onSubmit={handleSubmit} className="user-form">
           <div className="image">
-            <img src={defRecruiter} alt="" width="50px" />
+            <img src={logoPreview} alt="Logo" width="50px" />
             <input
               type="file"
-              name="image"
-              //onChange={(e) => setData({ ...data, image: e.target.files[0] })}
-              // onChange={handleImageChange}
+              name="logo"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (file) {
+                  setDataRec({ ...dataRec, logo: file });
+                  setLogoPreview(URL.createObjectURL(file));
+                }
+              }}
             />
           </div>
           <br />
